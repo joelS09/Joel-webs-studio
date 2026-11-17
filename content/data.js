@@ -1,1 +1,183 @@
-
+window.SITE_DATA={
+  "marca": {
+    "nombre": "Joel Webs Studio ",
+    "logo": "imagenes/logo-joel-webs-studio.jpg",
+    "video": "imagenes/612933.mp4"
+  },
+  "menu": [
+    {
+      "id": "inicio",
+      "texto": "INICIO"
+    },
+    {
+      "id": "planes",
+      "texto": "PLANES"
+    },
+    {
+      "id": "modelos",
+      "texto": "MODELOS"
+    },
+    {
+      "id": "portafolio",
+      "texto": "PORTAFOLIO"
+    },
+    {
+      "id": "preguntas",
+      "texto": "PREGUNTAS"
+    }
+  ],
+  "boton": {
+    "texto": "Pide tu sitio ya!"
+  },
+  "hero": {
+    "titulo": "EL FUTURO DE TU NEGOCIO",
+    "texto": "Pide tu sitio web para tu negocio y llega a más personas con la tecnología de WebStudio. ",
+    "placeholder": "Buscar..."
+  },
+  "secciones": {
+    "planes": "Planes",
+    "modelos": "Nuestros modelos",
+    "portafolio": "Portafolio",
+    "preguntas": "Preguntas Frecuentes"
+  },
+  "planes": [
+    {
+      "nombre": "Plan Básico",
+      "precio": "S/50",
+      "desc": "Una página simple y sencilla. \n5 Secciones. \n1 Página. \nEntrega en una semana. \nDominio Github. \nLugar en Google (apareces en los resultados de búsqueda de Google) Pero no te aseguramos el primer lugar ",
+      "img": "imagenes/590800.jpg",
+      "grad": "linear-gradient(135deg,#222,#000)"
+    },
+    {
+      "nombre": "Plan Básico S",
+      "precio": "S/100",
+      "desc": "Una página cencilla pero profesional. \n5 Secciones o más. \n2 Páginas (si es necesario). \nEntrega en una semana. \nDominio Github. \nAdmin. \nLugar en Google (Sales en los resultados de búsqueda de Google). ",
+      "img": "imagenes/611928.jpg",
+      "grad": "linear-gradient(135deg,#00ff88,#0055ff)"
+    },
+    {
+      "nombre": "Plan Pro",
+      "precio": "S/200",
+      "desc": "Una página profesional y elegante. \n5 Secciones o más. \n3 Páginas (si es necesario). \nEntrega en una semana. \nDominio Github. \nAdmin. \nLugar en Google (Sales en los resultados de búsqueda de Google). \nAnimaciones. ",
+      "img": "imagenes/590779.jpg",
+      "grad": "linear-gradient(135deg,#ff7a00,#000)"
+    },
+    {
+      "nombre": "Plan Ultra",
+      "precio": "S/250",
+      "desc": "Una página premium y profesional. \n7 Secciones o más. \n5 Páginas (si es necesario). \nEntrega en una semana. \nDominio Github. \nAdmin. \nLugar en Google (Sales en los resultados de búsqueda de Google). \nAnimaciones VIP. \nEstilo Premium. ",
+      "img": "imagenes/590849.jpg",
+      "grad": "linear-gradient(135deg,#ff0055,#000)"
+    }
+  ],
+  "modelos": [
+    {
+      "titulo": "Barberia 💈 ",
+      "precio": "S/150",
+      "keys": "Pro",
+      "img": "imagenes/617892.jpg",
+      "grad": "linear-gradient(135deg,#1a1a1a,#000)"
+    },
+    {
+      "titulo": "Producto Promo",
+      "precio": "S/75",
+      "keys": "Básico S Producto",
+      "img": "",
+      "grad": "linear-gradient(135deg,#00ff88,#0055ff)"
+    },
+    {
+      "titulo": "ApkMods",
+      "precio": "S/75",
+      "keys": "Apk Básico S",
+      "img": "",
+      "grad": "linear-gradient(135deg,#4a00ff,#00ffcc)"
+    },
+    {
+      "titulo": "Barber",
+      "precio": "S/150",
+      "keys": "Barber Pro",
+      "img": "",
+      "grad": "linear-gradient(135deg,#ff7a00,#000)"
+    },
+    {
+      "titulo": "Restaurant Gourmet",
+      "precio": "S/150",
+      "keys": "Restaurant Pro",
+      "img": "",
+      "grad": "linear-gradient(135deg,#ff0055,#ffcc00)"
+    },
+    {
+      "titulo": "Tienda Pro Max",
+      "precio": "S/250",
+      "keys": "Tienda Ultra",
+      "img": "",
+      "grad": "linear-gradient(135deg,#ff0055,#000)"
+    }
+  ],
+  "portafolio": [
+    {
+      "nombre": "Tony Barber",
+      "plan": "Plan Pro",
+      "img": "",
+      "grad": "linear-gradient(135deg,#ff7a00,#000)"
+    },
+    {
+      "nombre": "ApkMods",
+      "plan": "Plan Básico S",
+      "img": "",
+      "grad": "linear-gradient(135deg,#4a00ff,#00ffcc)"
+    },
+    {
+      "nombre": "Restaurant",
+      "plan": "Plan Pro",
+      "img": "",
+      "grad": "linear-gradient(135deg,#ff0055,#ffcc00)"
+    }
+  ],
+  "preguntas": [
+    {
+      "q": "¿Qué tiempo demora mi web?",
+      "a": "Mucho menos de lo que imaginas: en solo unos días, no semanas. Mientras otros siguen esperando, tu negocio ya puede estar recibiendo clientes por internet."
+    },
+    {
+      "q": "¿Se verá bien en celulares?",
+      "a": "Sí, 100%. Tu web se verá impecable en celular, tablet y computadora, y hoy la mayoría de tus clientes te busca desde el celular."
+    },
+    {
+      "q": "¿Cómo realizo el pago?",
+      "a": "Muy fácil y seguro: por Yape o transferencia bancaria. Sin trámites complicados, pagas y empezamos a trabajar en tu web."
+    },
+    {
+      "q": "¿Si no me convence la página puedo cambiarla después?",
+      "a": "¡Claro que sí! Te asesoramos paso a paso para que tu web quede tal como la imaginaste. Tu confianza es lo primero."
+    }
+  ],
+  "contacto": {
+    "whatsapp": "51977368277",
+    "titulo": "¿Quieres tener tu web?\nEscríbenos por WhatsApp",
+    "boton": "Cotizar por WhatsApp",
+    "msgGeneral": "Hola Joel quiero cotizar mi web",
+    "tituloPlan": "¡Perfecto! Quieres el {n}\n{p}",
+    "msgPlan": "Hola Joel quiero el {n} con el precio {p} podemos hablar?",
+    "tituloModelo": "¡Perfecto! Quieres tu web como la de {n}\n{p}",
+    "msgModelo": "Hola Joel quiero mi web así como está la de {n} con el precio {p} podemos hablar?"
+  },
+  "footer": [
+    "JoelWebs_Anthropic_GitHub_Cloudflare",
+    "©2026 todos los derechos reservados"
+  ],
+  "estilo": {
+    "tema": "original",
+    "temaAcento": "#22e06b",
+    "temaAcento2": "#ffd60a",
+    "temaFondo": "#050505",
+    "ledModo": "fijo",
+    "ledColor": "#ffffff",
+    "rgbColores": [],
+    "ledVelocidad": "4",
+    "generalModo": "fijo",
+    "generalColor": "#00ffff",
+    "botonModo": "fijo",
+    "botonColor": "#00ffff"
+  }
+};
