@@ -1,7 +1,7 @@
 window.SITE_DATA={
   "marca": {
     "nombre": "Joel Webs Studio ",
-    "logo": "imagenes/logo-joel-webs-studio.jpg",
+    "logo": "imagenes/612999.jpg",
     "video": "imagenes/612933.mp4"
   },
   "menu": [
@@ -43,6 +43,8 @@ window.SITE_DATA={
   "planes": [
     {
       "nombre": "Plan Básico",
+      "icono": "imagenes/plan-plata.webp",
+      "acento": "#c9d1dc",
       "precio": "S/50",
       "desc": "Una página simple y sencilla. \n5 Secciones. \n1 Página. \nEntrega en una semana. \nDominio Github. \nLugar en Google (apareces en los resultados de búsqueda de Google) Pero no te aseguramos el primer lugar ",
       "img": "imagenes/590800.jpg",
@@ -50,6 +52,8 @@ window.SITE_DATA={
     },
     {
       "nombre": "Plan Básico S",
+      "icono": "imagenes/plan-oro.webp",
+      "acento": "#f2c14e",
       "precio": "S/100",
       "desc": "Una página cencilla pero profesional. \n5 Secciones o más. \n2 Páginas (si es necesario). \nEntrega en una semana. \nDominio Github. \nAdmin. \nLugar en Google (Sales en los resultados de búsqueda de Google). ",
       "img": "imagenes/611928.jpg",
@@ -57,6 +61,8 @@ window.SITE_DATA={
     },
     {
       "nombre": "Plan Pro",
+      "icono": "imagenes/plan-platino.webp",
+      "acento": "#b48cff",
       "precio": "S/200",
       "desc": "Una página profesional y elegante. \n5 Secciones o más. \n3 Páginas (si es necesario). \nEntrega en una semana. \nDominio Github. \nAdmin. \nLugar en Google (Sales en los resultados de búsqueda de Google). \nAnimaciones. ",
       "img": "imagenes/590779.jpg",
@@ -64,6 +70,8 @@ window.SITE_DATA={
     },
     {
       "nombre": "Plan Ultra",
+      "icono": "imagenes/plan-diamante.webp",
+      "acento": "#7cc8ff",
       "precio": "S/250",
       "desc": "Una página premium y profesional. \n7 Secciones o más. \n5 Páginas (si es necesario). \nEntrega en una semana. \nDominio Github. \nAdmin. \nLugar en Google (Sales en los resultados de búsqueda de Google). \nAnimaciones VIP. \nEstilo Premium. ",
       "img": "imagenes/590849.jpg",
@@ -73,6 +81,7 @@ window.SITE_DATA={
   "modelos": [
     {
       "titulo": "Barberia 💈 ",
+      "acento": "#f2c14e",
       "precio": "S/150",
       "keys": "Pro",
       "img": "imagenes/617892.jpg",
@@ -80,6 +89,7 @@ window.SITE_DATA={
     },
     {
       "titulo": "Producto Promo",
+      "acento": "#b48cff",
       "precio": "S/75",
       "keys": "Básico S Producto",
       "img": "",
@@ -87,6 +97,7 @@ window.SITE_DATA={
     },
     {
       "titulo": "ApkMods",
+      "acento": "#7cc8ff",
       "precio": "S/75",
       "keys": "Apk Básico S",
       "img": "",
@@ -94,6 +105,7 @@ window.SITE_DATA={
     },
     {
       "titulo": "Barber",
+      "acento": "#ff6b8a",
       "precio": "S/150",
       "keys": "Barber Pro",
       "img": "",
@@ -101,6 +113,7 @@ window.SITE_DATA={
     },
     {
       "titulo": "Restaurant Gourmet",
+      "acento": "#3ddc97",
       "precio": "S/150",
       "keys": "Restaurant Pro",
       "img": "",
@@ -108,6 +121,7 @@ window.SITE_DATA={
     },
     {
       "titulo": "Tienda Pro Max",
+      "acento": "#ff9f43",
       "precio": "S/250",
       "keys": "Tienda Ultra",
       "img": "",
@@ -117,18 +131,21 @@ window.SITE_DATA={
   "portafolio": [
     {
       "nombre": "Tony Barber",
+      "acento": "#c9d1dc",
       "plan": "Plan Pro",
       "img": "",
       "grad": "linear-gradient(135deg,#ff7a00,#000)"
     },
     {
       "nombre": "ApkMods",
+      "acento": "#f2c14e",
       "plan": "Plan Básico S",
       "img": "",
       "grad": "linear-gradient(135deg,#4a00ff,#00ffcc)"
     },
     {
       "nombre": "Restaurant",
+      "acento": "#b48cff",
       "plan": "Plan Pro",
       "img": "",
       "grad": "linear-gradient(135deg,#ff0055,#ffcc00)"
