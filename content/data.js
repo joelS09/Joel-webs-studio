@@ -191,8 +191,8 @@ window.SITE_DATA={
   "estilo": {
     "tema": "personalizado",
     "temaAcento": "#ffffff",
-    "temaAcento2": "#ffffff",
-    "temaFondo": "#ffffff",
+    "temaAcento2": "#4d4d4d",
+    "temaFondo": "#000000",
     "ledModo": "fijo",
     "ledColor": "#ffffff",
     "rgbColores": [],
