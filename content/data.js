@@ -10,6 +10,10 @@ window.SITE_DATA={
       "texto": "INICIO"
     },
     {
+      "id": "skills",
+      "texto": "SKILLS"
+    },
+    {
       "id": "planes",
       "texto": "PLANES"
     },
@@ -38,7 +42,8 @@ window.SITE_DATA={
     "planes": "Planes",
     "modelos": "Nuestros modelos",
     "portafolio": "Portafolio",
-    "preguntas": "Preguntas Frecuentes"
+    "preguntas": "Preguntas Frecuentes",
+    "skills": "Skills"
   },
   "planes": [
     {
@@ -196,5 +201,58 @@ window.SITE_DATA={
     "generalColor": "#00ffff",
     "botonModo": "fijo",
     "botonColor": "#00ffff"
-  }
+  },
+  "presentacion": {
+    "etiqueta": "HOLA, SOY JOEL",
+    "titulo": "Tu negocio merece verse como el número uno.",
+    "texto": "Soy Joel, programador web. Me dedico a crear sitios web para negocios, emprendedores y empresas que quieren dejar de ser uno más y empezar a recibir clientes todos los días.\nHoy tus clientes te buscan en Google desde el celular. Si no te encuentran, le compran a tu competencia, aunque tú seas mejor. Cada día sin web es un cliente que se va a otro lado.\nPor eso creo webs rápidas, elegantes y listas para vender, y me encargo de todo: diseño, programación y publicación.",
+    "puntos": [
+      "Confianza al instante: una web profesional te hace ver más serio que cualquier perfil de redes.",
+      "Tu negocio abierto las 24 horas, mostrando tus servicios y precios mientras tú descansas.",
+      "Entrega en una semana, sin esperas eternas.",
+      "Te posicionamos en Google para que te encuentren justo cuando te necesitan.",
+      "Nada de trampas ni letras chicas: sabes lo que pagas desde el inicio."
+    ],
+    "pasos": [
+      "Me cuentas tu idea",
+      "Diseño y programo tu web",
+      "Publicas y recibes clientes"
+    ],
+    "cierre": "Planes desde {desde}. Con un solo cliente nuevo, tu web ya puede pagarse sola. Elige tu plan y empecemos hoy.",
+    "boton2": "Ver planes"
+  },
+  "skills": [
+    {
+      "nombre": "HTML",
+      "img": "imagenes/skills/html.png"
+    },
+    {
+      "nombre": "CSS",
+      "img": "imagenes/skills/css.png"
+    },
+    {
+      "nombre": "JS",
+      "img": "imagenes/skills/js.png"
+    },
+    {
+      "nombre": "Python",
+      "img": "imagenes/skills/python.png"
+    },
+    {
+      "nombre": "Java",
+      "img": "imagenes/skills/java.png"
+    },
+    {
+      "nombre": "C",
+      "img": "imagenes/skills/c.png"
+    },
+    {
+      "nombre": "C++",
+      "img": "imagenes/skills/cpp.png"
+    },
+    {
+      "nombre": "Kali Linux",
+      "img": "imagenes/skills/kali.png"
+    }
+  ]
 };
