@@ -190,7 +190,7 @@ window.SITE_DATA={
   ],
   "estilo": {
     "tema": "personalizado",
-    "temaAcento": "#000000",
+    "temaAcento": "#ffffff",
     "temaAcento2": "#000000",
     "temaFondo": "#000000",
     "ledModo": "fijo",
