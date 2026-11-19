@@ -35,7 +35,7 @@ window.SITE_DATA={
   },
   "hero": {
     "titulo": "EL FUTURO DE TU NEGOCIO",
-    "texto": "Pide tu sitio web para tu negocio y llega a más personas con la tecnología de WebStudio. ",
+    "texto": "",
     "placeholder": "Buscar..."
   },
   "secciones": {
@@ -190,9 +190,9 @@ window.SITE_DATA={
   ],
   "estilo": {
     "tema": "original",
-    "temaAcento": "#22e06b",
-    "temaAcento2": "#ffd60a",
-    "temaFondo": "#050505",
+    "temaAcento": "#5cff5c",
+    "temaAcento2": "#5cff5c",
+    "temaFondo": "#070b07",
     "ledModo": "fijo",
     "ledColor": "#ffffff",
     "rgbColores": [],
@@ -203,22 +203,15 @@ window.SITE_DATA={
     "botonColor": "#00ffff"
   },
   "presentacion": {
-    "etiqueta": "HOLA, SOY JOEL",
+    "etiqueta": "SOBRE MÍ",
     "titulo": "Tu negocio merece verse como el número uno.",
     "texto": "Soy Joel, programador web. Me dedico a crear sitios web para negocios, emprendedores y empresas que quieren dejar de ser uno más y empezar a recibir clientes todos los días.\nHoy tus clientes te buscan en Google desde el celular. Si no te encuentran, le compran a tu competencia, aunque tú seas mejor. Cada día sin web es un cliente que se va a otro lado.\nPor eso creo webs rápidas, elegantes y listas para vender, y me encargo de todo: diseño, programación y publicación.",
-    "puntos": [
-      "Confianza al instante: una web profesional te hace ver más serio que cualquier perfil de redes.",
-      "Tu negocio abierto las 24 horas, mostrando tus servicios y precios mientras tú descansas.",
-      "Entrega en una semana, sin esperas eternas.",
-      "Te posicionamos en Google para que te encuentren justo cuando te necesitan.",
-      "Nada de trampas ni letras chicas: sabes lo que pagas desde el inicio."
-    ],
     "pasos": [
       "Me cuentas tu idea",
       "Diseño y programo tu web",
       "Publicas y recibes clientes"
     ],
-    "cierre": "Planes desde {desde}. Con un solo cliente nuevo, tu web ya puede pagarse sola. Elige tu plan y empecemos hoy.",
+    "cierre": "Con un solo cliente nuevo, tu web ya puede pagarse sola. Elige tu plan y empecemos hoy.",
     "boton2": "Ver planes"
   },
   "skills": [
@@ -251,8 +244,12 @@ window.SITE_DATA={
       "img": "imagenes/skills/cpp.png"
     },
     {
-      "nombre": "Kali Linux",
-      "img": "imagenes/skills/kali.png"
+      "nombre": "C#",
+      "img": "imagenes/skills/csharp.png"
     }
-  ]
+  ],
+  "app": {
+    "texto": "Instalar app",
+    "archivo": "app/JoelWebs.apk"
+  }
 };
