@@ -1,0 +1,2 @@
+Pon aquí el archivo de la app ya listo para descargar (por ejemplo JoelWebs.apk).
+El nombre debe coincidir con el del admin, en "Botón Instalar app" > "Archivo a descargar" (por defecto: app/JoelWebs.apk).
