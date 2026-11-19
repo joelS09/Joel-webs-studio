@@ -2,7 +2,7 @@ window.SITE_DATA={
   "marca": {
     "nombre": "Joel Webs Studio ",
     "logo": "imagenes/624578.png",
-    "video": "imagenes/624514.mp4"
+    "video": "imagenes/624591.mp4"
   },
   "menu": [
     {
@@ -191,7 +191,7 @@ window.SITE_DATA={
   "estilo": {
     "tema": "personalizado",
     "temaAcento": "#ffffff",
-    "temaAcento2": "#4d4d4d",
+    "temaAcento2": "#636363",
     "temaFondo": "#000000",
     "ledModo": "fijo",
     "ledColor": "#ffffff",
