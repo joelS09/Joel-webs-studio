@@ -1,8 +1,9 @@
 window.SITE_DATA={
   "marca": {
     "nombre": "Joel Webs Studio ",
-    "logo": "imagenes/612999.jpg",
-    "video": "imagenes/612933.mp4"
+    "logo": "imagenes/624578.png",
+    "video": "imagenes/624514.mp4",
+    "videoMovil": "imagenes/624514.mp4"
   },
   "menu": [
     {
@@ -189,10 +190,10 @@ window.SITE_DATA={
     "©2026 todos los derechos reservados"
   ],
   "estilo": {
-    "tema": "original",
-    "temaAcento": "#5cff5c",
-    "temaAcento2": "#5cff5c",
-    "temaFondo": "#070b07",
+    "tema": "personalizado",
+    "temaAcento": "#ffffff",
+    "temaAcento2": "#ffffff",
+    "temaFondo": "#ffffff",
     "ledModo": "fijo",
     "ledColor": "#ffffff",
     "rgbColores": [],
@@ -203,7 +204,7 @@ window.SITE_DATA={
     "botonColor": "#00ffff"
   },
   "presentacion": {
-    "etiqueta": "SOBRE MÍ",
+    "etiqueta": "Sobre mí",
     "titulo": "Tu negocio merece verse como el número uno.",
     "texto": "Soy Joel, programador web. Me dedico a crear sitios web para negocios, emprendedores y empresas que quieren dejar de ser uno más y empezar a recibir clientes todos los días.\nHoy tus clientes te buscan en Google desde el celular. Si no te encuentran, le compran a tu competencia, aunque tú seas mejor. Cada día sin web es un cliente que se va a otro lado.\nPor eso creo webs rápidas, elegantes y listas para vender, y me encargo de todo: diseño, programación y publicación.",
     "pasos": [
@@ -212,7 +213,7 @@ window.SITE_DATA={
       "Publicas y recibes clientes"
     ],
     "cierre": "Con un solo cliente nuevo, tu web ya puede pagarse sola. Elige tu plan y empecemos hoy.",
-    "boton2": "Ver planes"
+    "boton2": "Cotizar"
   },
   "skills": [
     {
