@@ -1,5 +1,5 @@
 /* Service worker: permite instalar la app y abrirla sin conexión. Red primero (máx. 3 s) para ver siempre lo último sin quedarse esperando en conexiones lentas. */
-const V='joelwebs-v6',CORE=['./','index.html','admin.html','content/data.js','manifest.webmanifest','manifest-admin.webmanifest','imagenes/612999.jpg','imagenes/plan-plata.webp','imagenes/plan-oro.webp','imagenes/plan-platino.webp','imagenes/plan-diamante.webp'];
+const V='joelwebs-v8',CORE=['./','index.html','admin.html','content/data.js','manifest.webmanifest','manifest-admin.webmanifest','imagenes/612999.jpg','imagenes/plan-plata.webp','imagenes/plan-oro.webp','imagenes/plan-platino.webp','imagenes/plan-diamante.webp'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(V).then(c=>Promise.all(CORE.map(u=>c.add(u).catch(()=>{})))).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==V).map(x=>caches.delete(x)))).then(()=>self.clients.claim()))});
 self.addEventListener('fetch',e=>{
