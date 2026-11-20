@@ -1,5 +1,5 @@
 /* Service worker: permite instalar la app y abrirla sin conexión. Red primero (máx. 3 s) para ver siempre lo último sin quedarse esperando en conexiones lentas. */
-const V='joelwebs-v10',CORE=['./','index.html','admin.html','content/data.js','manifest.webmanifest','manifest-admin.webmanifest','imagenes/logo.png','imagenes/icon-192.png','imagenes/icon-512.png','imagenes/icon-maskable-512.png','imagenes/plan-plata.webp','imagenes/plan-oro.webp','imagenes/plan-platino.webp','imagenes/plan-diamante.webp'];
+const V='joelwebs-v11',CORE=['./','index.html','admin.html','content/data.js','manifest.webmanifest','manifest-admin.webmanifest','imagenes/logo.png','imagenes/favicon-192.png','imagenes/icon-192.png','imagenes/icon-512.png','imagenes/icon-maskable-512.png','imagenes/plan-plata.webp','imagenes/plan-oro.webp','imagenes/plan-platino.webp','imagenes/plan-diamante.webp'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(V).then(c=>Promise.all(CORE.map(u=>c.add(u).catch(()=>{})))).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==V).map(x=>caches.delete(x)))).then(()=>self.clients.claim()))});
 self.addEventListener('fetch',e=>{
