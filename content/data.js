@@ -247,9 +247,5 @@ window.SITE_DATA={
       "nombre": "C#",
       "img": "imagenes/skills/csharp.png"
     }
-  ],
-  "app": {
-    "texto": "Instalar app",
-    "archivo": "app/JoelWebs.apk"
-  }
+  ]
 };
