@@ -1,7 +1,7 @@
 window.SITE_DATA={
   "marca": {
     "nombre": "Joel Deploy",
-    "logo": "imagenes/625942.png",
+    "logo": "imagenes/626000.jpg",
     "video": "imagenes/612933.mp4",
     "videoMovil": "imagenes/612933.mp4"
   },
@@ -195,13 +195,13 @@ window.SITE_DATA={
     "temaAcento2": "#ffffff",
     "temaFondo": "#000000",
     "ledModo": "rgb",
-    "ledColor": "#ffffff",
+    "ledColor": "#00ffff",
     "rgbColores": [
       "#ff0000",
       "#00ff00",
       "#0066ff"
     ],
-    "ledVelocidad": "4",
+    "ledVelocidad": "1",
     "generalModo": "fijo",
     "generalColor": "#00ffff",
     "botonModo": "fijo",
