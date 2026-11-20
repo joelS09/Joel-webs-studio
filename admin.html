@@ -4,8 +4,8 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex,nofollow">
 <title>Admin · Joel Webs</title>
-<link rel="icon" type="image/png" href="imagenes/favicon-48.png" sizes="48x48"><link rel="icon" type="image/png" href="imagenes/favicon-192.png" sizes="192x192"><link rel="apple-touch-icon" href="imagenes/apple-touch-icon.png">
-<link rel="manifest" href="manifest-admin.webmanifest"><meta name="theme-color" content="#070b07">
+<link rel="icon" type="image/png" href="imagenes/favicon-48.png" sizes="48x48"><link rel="icon" type="image/png" href="imagenes/favicon-192.png" sizes="192x192">
+<meta name="theme-color" content="#070b07">
 <meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Admin Webs">
 <style>
 *{box-sizing:border-box;margin:0}
@@ -36,16 +36,12 @@ input[type=color]{height:40px;padding:3px}
 </head>
 <body>
 <div id="login"><div><h2>Admin · Joel Webs</h2><input id="pw" type="password" placeholder="Clave" autocomplete="current-password"><button id="go">Entrar</button></div></div>
-<header><img src="imagenes/icon-192.png" alt="" style="width:26px;height:26px;border-radius:7px;object-fit:cover" onerror="this.style.display='none'"><b>Admin</b><button class="g" id="bInst" style="display:none">Instalar app</button><button class="g" id="bPrev">Vista previa</button><button class="g" id="bDown">Descargar</button><button class="g" id="bSave">Guardar en carpeta</button><button id="bGh">Publicar en GitHub</button></header>
+<header><img src="imagenes/favicon-192.png" alt="" style="width:26px;height:26px;border-radius:7px;object-fit:cover" onerror="this.style.display='none'"><b>Admin</b><button class="g" id="bPrev">Vista previa</button><button class="g" id="bDown">Descargar</button><button class="g" id="bSave">Guardar en carpeta</button><button id="bGh">Publicar en GitHub</button></header>
 <main><p class="note">Edita el contenido y pulsa <b>Publicar en GitHub</b>: sube las imágenes nuevas a <b>imagenes/</b> y actualiza <b>content/data.js</b> directamente en tu repositorio (Cloudflare Pages lo publica solo). Primero completa <b>Conexión con GitHub</b>. Alternativas sin GitHub: <b>Guardar en carpeta</b> (Chrome/Edge) o <b>Descargar</b>.</p><div id="m"></div></main>
 <div id="msg"></div>
 <script src="content/data.js"></script>
 <script>
-(()=>{let dp=null;const b=document.getElementById('bInst');
-addEventListener('beforeinstallprompt',e=>{e.preventDefault();dp=e;b.style.display=''});
-b.onclick=async()=>{if(!dp)return;dp.prompt();await dp.userChoice;dp=null;b.style.display='none'};
-addEventListener('appinstalled',()=>{b.style.display='none'});
-if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}))})();
+if('serviceWorker' in navigator){navigator.serviceWorker.getRegistrations().then(r=>r.forEach(x=>x.unregister())).catch(()=>{});if(window.caches)caches.keys().then(k=>k.forEach(x=>caches.delete(x))).catch(()=>{})}
 </script>
 <script>
 const PASS='joelwebs2026'; // cámbiala aquí. Para seguridad real, protege /admin con Cloudflare Access.
@@ -59,7 +55,6 @@ const S=[
 {t:'Inicio (textos)',p:'hero',k:'obj',f:[['titulo','Título'],['texto','Texto','area'],['placeholder','Texto del buscador']]},
 {t:'Sobre mí (Inicio)',p:'presentacion',k:'obj',f:[['etiqueta','Etiqueta pequeña'],['titulo','Título'],['texto','Texto (cada salto de línea es un párrafo)','area'],['cierre','Frase final ({desde} = precio del plan más barato)','area'],['boton2','Texto del segundo botón']]},
 {t:'Presentación: pasos (se numeran solos)',p:'presentacion.pasos',k:'strs'},
-{t:'Botón Instalar app (menú)',p:'app',k:'obj',f:[['texto','Texto del botón'],['archivo','Archivo a descargar (dentro de la carpeta app/)']]},
 {t:'Skills (logo y nombre)',p:'skills',k:'arr',f:[['nombre','Nombre'],['img','Logo','file']],n:{nombre:'',img:''}},
 {t:'Títulos de secciones',p:'secciones',k:'obj',f:[['planes','Planes'],['modelos','Modelos'],['portafolio','Portafolio'],['preguntas','Preguntas'],['skills','Skills']]},
 {t:'Planes',p:'planes',k:'arr',f:[['nombre','Nombre'],['precio','Precio'],['desc','Descripción','area'],['keys','Palabras clave extra (opcional, el nombre ya cuenta)'],['icono','Ícono del plan (se ve arriba de la tarjeta)','file'],['acento','Color de la tarjeta (borde, luz LED y checks)','color'],['img','Imagen','file']],n:{nombre:'',precio:'',desc:'',keys:'',icono:'',acento:'#c9d1dc',img:'',grad:G}},
