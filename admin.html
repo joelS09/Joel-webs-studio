@@ -50,7 +50,7 @@ const clone=o=>JSON.parse(JSON.stringify(o));
 let D=clone(window.SITE_DATA),files={},dir=null,abierto='marca';
 const G="linear-gradient(135deg,#222,#000)";
 const S=[
-{t:'Nombre, logo y video',p:'marca',k:'obj',f:[['nombre','Nombre'],['logo','Logo','file'],['video','Video de fondo (nítido en el inicio, borroso al bajar)','file'],['videoMovil','Video para celular vertical (opcional)','file']]},
+{t:'Nombre, logo y video',p:'marca',k:'obj',f:[['nombre','Nombre'],['logo','Logo','file'],['video','Video de fondo (nítido en el inicio, borroso desde Sobre mí)','file'],['videoMovil','Video de fondo para celular (opcional)','file']]},
 {t:'Color de toda la página (elige una combinación o Personalizado)',p:'estilo',k:'obj',f:[['tema','Combinación de colores','select',[['original','Verde neón (por defecto)'],['verde-amarillo','Verde y amarillo'],['verde-blanco','Verde y blanco'],['azul-verde','Azul eléctrico y verde'],['personalizado','Personalizado (usa los 3 colores de abajo)']]],['temaAcento','Color principal (solo Personalizado)','color'],['temaAcento2','Color secundario (solo Personalizado)','color'],['temaFondo','Color de fondo (solo Personalizado)','color']]},
 {t:'Inicio (textos)',p:'hero',k:'obj',f:[['titulo','Título'],['texto','Texto','area'],['placeholder','Texto del buscador']]},
 {t:'Sobre mí (Inicio)',p:'presentacion',k:'obj',f:[['etiqueta','Etiqueta pequeña'],['titulo','Título'],['texto','Texto (cada salto de línea es un párrafo)','area'],['cierre','Frase final ({desde} = precio del plan más barato)','area'],['boton2','Texto del segundo botón']]},
