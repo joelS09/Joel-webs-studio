@@ -171,7 +171,7 @@ body{overflow-x:clip}
 .vermas.none{display:none !important}
 .vermas i{width:9px;height:9px;border:solid currentColor;border-width:0 2px 2px 0;transform:rotate(45deg) translateY(-2px);transition:transform .3s}
 .vermas.open i{transform:rotate(-135deg) translateY(-1px)}
-.car-arrows{display:none;gap:10px;align-items:center}
+.car-arrows{display:flex;gap:10px;align-items:center;margin-left:auto;flex:0 0 auto}
 .car-arrows button{width:42px;height:42px;border-radius:50%;border:1.5px solid rgba(var(--acc),.6);background:rgba(20,20,26,.8);color:rgb(var(--fg));font-size:22px;line-height:1;cursor:pointer;transition:transform .25s,background .25s}
 .car-arrows button:hover{background:rgba(var(--acc),.25);transform:scale(1.08)}
 .car-arrows.off{visibility:hidden}
@@ -220,11 +220,10 @@ body:not(.ready) .hero>*{animation-play-state:paused}
  .sec-head h2{font-size:clamp(28px,2.4vw,40px);gap:14px}
  .sec-ico{width:36px;height:36px}
  #contador{font-size:17px}
- .carousel{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;overflow:visible;padding:8px 0 14px;margin:0;scroll-padding:0;scroll-snap-type:none}
- .carousel>.nores{grid-column:1/-1}
- #carouselPlanes.carousel{display:flex;gap:26px;overflow-x:auto;padding:44px 56px 84px;margin:-36px -56px -70px;scroll-padding-left:56px;scroll-snap-type:x proximity}
+ .carousel{display:flex;gap:26px;overflow-x:auto;padding:44px 56px 84px;margin:-36px -56px -70px;scroll-padding-left:56px;scroll-snap-type:x proximity}
+ .carousel>.nores{flex:1}
  #carouselPlanes>.plan-card{flex:0 0 clamp(280px,21vw,330px)}
- .car-arrows{display:flex}
+ #carouselModelos>.gcard,#carouselPorta>.gcard{flex:0 0 clamp(270px,20vw,320px)}
  .vermas{display:flex}
  .plan-card,.gcard.gcard{flex:none;width:auto;max-width:none}
  .plan-card{padding:34px 28px 28px}
@@ -552,62 +551,6 @@ html body.menu-ready #drawer .ring{animation-play-state:running}
 html[data-theme=light] .sk img{padding:8px;border-radius:18px}
 
 
-/* ===== Planes: acordeón (cerrado = solo el nombre; abierto = tarjeta completa) ===== */
-#carouselPlanes.acc{display:flex;flex-direction:column;gap:12px;padding:6px 16px 14px 0;margin:0;overflow:visible}
-html #carouselPlanes>.pa{flex:none;width:auto;max-width:none;min-width:0;padding:0;overflow:hidden;position:relative;transform:none;opacity:1}
-html #carouselPlanes>.pa:hover,html #carouselPlanes>.pa:focus-within{transform:none}
-.pa-h{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;padding:22px 22px;background:none;border:0;border-radius:0;color:rgb(var(--fg));font-family:inherit;font-weight:700;font-size:clamp(17px,4.6vw,20px);line-height:1.2;text-align:left;cursor:pointer;-webkit-appearance:none;appearance:none;position:relative;z-index:2}
-.pa-h:focus-visible{outline:2px solid rgb(var(--pc));outline-offset:-4px}
-.pa-name{letter-spacing:.01em;transition:color .4s}
-.pa.open .pa-name{color:rgb(var(--pc))}
-.pa-chev{flex:0 0 auto;width:10px;height:10px;border:solid currentColor;border-width:0 2px 2px 0;transform:rotate(45deg) translateY(-2px);transition:transform .45s cubic-bezier(.2,.8,.2,1);opacity:.8}
-.pa.open .pa-chev{transform:rotate(-135deg) translateY(-1px)}
-.pa-b{display:grid;grid-template-rows:0fr;transition:grid-template-rows .65s cubic-bezier(.2,.8,.2,1)}
-.pa.open .pa-b{grid-template-rows:1fr}
-.pa-in{overflow:hidden;min-height:0;padding:0 22px}
-.pa-c{display:grid;grid-template-areas:"top" "list" "btn";gap:0;padding:0 0 24px}
-.pa-top{grid-area:top;border-bottom:1px solid rgba(var(--pc),.5);padding-bottom:16px;margin-bottom:18px}
-.pa-c .plan-list{grid-area:list;margin:0 0 24px !important}
-.pa-c .btn-glow{grid-area:btn;align-self:end}
-.pa-top .plan-name{font-size:13px;letter-spacing:.16em;margin:0}
-html .pa .plan-price{font-size:clamp(64px,19vw,76px) !important;margin:8px 0 0 !important;letter-spacing:-2px !important;line-height:1 !important}
-html .pa .plan-price small{font-size:clamp(22px,6vw,28px);transform:translateY(-.6em);letter-spacing:0}
-/* entrada escalonada al abrir: nombre → precio (con rebote) → cada característica → botón */
-.pa .plan-name{opacity:0;translate:0 10px;transition:opacity .2s,translate .2s}
-.pa .plan-price{opacity:0;scale:.5;transform-origin:left center;transition:opacity .2s,scale .2s}
-.pa .plan-list li{opacity:0;translate:-18px 0;transition:opacity .2s,translate .2s}
-.pa .plan-list li:before{scale:0;transition:scale .2s}
-.pa .btn-glow{opacity:0;translate:0 14px;transition:opacity .2s,translate .2s,transform .2s,box-shadow .2s,background .2s}
-.pa.open .plan-name{opacity:1;translate:0;transition:opacity .5s ease .3s,translate .5s cubic-bezier(.2,.8,.2,1) .3s}
-.pa.open .plan-price{opacity:1;scale:1;transition:opacity .4s ease .45s,scale .75s cubic-bezier(.3,1.5,.5,1) .45s}
-.pa.open .plan-list li{opacity:.92;translate:0;transition:opacity .5s ease calc(.85s + var(--i,0)*.16s),translate .55s cubic-bezier(.2,.8,.2,1) calc(.85s + var(--i,0)*.16s)}
-.pa.open .plan-list li:before{scale:1;transition:scale .45s cubic-bezier(.3,1.6,.5,1) calc(.95s + var(--i,0)*.16s)}
-.pa.open .btn-glow{opacity:1;translate:0;transition:opacity .5s ease calc(.95s + var(--n,3)*.16s),translate .5s cubic-bezier(.2,.8,.2,1) calc(.95s + var(--n,3)*.16s),transform .2s,box-shadow .2s,background .2s}
-@media (min-width:900px){
- #carouselPlanes.acc{flex-direction:row;gap:14px;padding:6px 0 14px;height:640px;align-items:stretch}
- html #carouselPlanes>.pa{flex:1 1 0;transition:flex-grow .85s cubic-bezier(.2,.8,.2,1),box-shadow .3s}
- html #carouselPlanes>.pa.open{flex-grow:5.4}
- .pa-h{position:absolute;top:0;left:0;right:0;bottom:0;flex-direction:column;align-items:center;justify-content:space-between;padding:28px 0 26px;transition:opacity .3s .15s}
- .pa-name{writing-mode:vertical-rl;transform:rotate(180deg);font-size:19px;letter-spacing:.06em;white-space:nowrap}
- .pa.open .pa-h{opacity:0;pointer-events:none;transition:opacity .15s}
- .pa-chev{transform:rotate(45deg)}
- .pa-b{position:absolute;top:0;left:0;right:0;bottom:0;display:block;opacity:0;pointer-events:none;transition:opacity .2s}
- .pa.open .pa-b{opacity:1;pointer-events:auto;transition:opacity .4s .25s}
- .pa-in{overflow:hidden;height:100%;padding:0;min-width:440px}
- .pa-c{height:100%;padding:34px 30px 30px;grid-template-rows:auto 1fr auto}
- .pa-top .plan-name{font-size:14px}
- .pa-c .plan-list li{font-size:15px}
-}
-@media (min-width:1100px){
- #carouselPlanes.acc{height:540px}
- .pa-in{min-width:640px}
- .pa-c{grid-template-areas:"top list" "btn list";grid-template-columns:minmax(200px,.8fr) 1.2fr;grid-template-rows:1fr auto;column-gap:36px;padding:40px 40px 36px}
- .pa-top{border-bottom:0;margin-bottom:0;padding-bottom:0;align-self:start}
- .pa-c .plan-list{margin:6px 0 0 !important;padding-left:36px;border-left:1px solid rgba(var(--pc),.35);gap:16px !important;align-self:start}
- html .pa .plan-price{font-size:clamp(70px,5.6vw,96px) !important}
- .pa-c .plan-list li{font-size:16px}
-}
-
 /* ===== Modelos y portafolio: "Ver todos" ===== */
 .vermas:not(.none){display:flex}
 .vermas{margin:22px auto 8px}
@@ -628,6 +571,32 @@ html.td-open{overflow:hidden}
 .td-grid .nores{grid-column:1/-1}
 @media (min-width:900px){.td-wrap{padding:24px 56px 80px}.td-grid{gap:26px;grid-template-columns:repeat(auto-fill,minmax(290px,1fr))}}
 .gcard video.pic{background:rgba(var(--bgrgb),.55)}
+
+/* ===== Carruseles: tarjeta seleccionada (como la del medio en el diseño de referencia) ===== */
+.carousel>.plan-card,.carousel>.gcard.gcard{transition:scale .4s cubic-bezier(.2,.8,.2,1),filter .4s ease,box-shadow .4s ease}
+.carousel.selm>*:not(.sel){filter:brightness(.78) saturate(.85)}
+.carousel>.sel{scale:1.05;z-index:3;filter:none;box-shadow:0 24px 64px rgba(var(--acc),.26),0 0 44px rgba(var(--acc),.32),inset 0 1px 0 rgba(var(--fg),.14)}
+html .carousel.selm>*:not(.sel):before{opacity:.3}
+html .carousel>.sel:before{opacity:1}
+html .carousel.selm>.plan-card:not(.sel) .btn-glow,html .carousel.selm>.gcard:not(.sel) .btn-glow{background:rgba(var(--fg),.06) !important;color:rgb(var(--fg)) !important;border:1px solid rgba(var(--fg),.16) !important;box-shadow:none !important}
+html .carousel>.sel .btn-glow{box-shadow:0 0 26px rgba(var(--acc),.55) !important}
+/* al seleccionarse, entran el precio y cada característica */
+@keyframes selPop{0%{opacity:.2;transform:scale(.7)}60%{transform:scale(1.06)}100%{opacity:1;transform:none}}
+@keyframes selIn{from{opacity:0;transform:translateX(-14px)}to{opacity:.92;transform:none}}
+.plan-card.sel .plan-price{animation:selPop .6s cubic-bezier(.3,1.4,.5,1) both;transform-origin:left center}
+.plan-card.sel .plan-list li{animation:selIn .5s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(.12s + var(--i,0)*.08s)}
+html .plan-card .plan-price{font-size:clamp(56px,16vw,64px) !important;margin:8px 0 0 !important;letter-spacing:-2px !important;line-height:1 !important}
+html .plan-card .plan-price small{font-size:24px;transform:translateY(-.55em);letter-spacing:0}
+@media (min-width:900px){html .plan-card .plan-price{font-size:clamp(54px,4.2vw,66px) !important}}
+/* flechas */
+.car-arrows.off{display:none}
+@media (max-width:899px){
+ .car-arrows button{width:36px;height:36px;font-size:20px}
+ .sec-head{padding-right:16px}
+ .carousel{margin:-46px 0 -64px -16px;padding:60px max(11vw,calc((100vw - 300px)/2)) 90px;scroll-padding:0;scroll-snap-type:x mandatory}
+ .carousel>*{scroll-snap-align:center}
+}
+html.lite .carousel>.sel{box-shadow:0 0 0 2px rgba(var(--acc),.7),0 0 18px rgba(var(--acc),.3)}
 </style>
 </head>
 <body>
@@ -741,7 +710,7 @@ $('app').innerHTML=`
 <div class="about-tx">${(P.texto||'').split('\n').filter(Boolean).map(t=>`<p>${E(t)}</p>`).join('')}</div>
 <div class="pasos">${(P.pasos||[]).map(t=>`<div class="paso">${E(t)}</div>`).join('')}</div>
 <div class="intro-cierre"><p>${E((P.cierre||'').replace('{desde}',DESDE))}</p><div class="intro-btns"><a class="btn-glow ghost" href="#planes">${E(P.boton2||'Ver planes')}</a></div></div></section></div>
-<div class="section" id="planes"><div class="sec-head"><h2>${SI('planes')}${E(S.planes)}</h2></div><div class="acc" id="carouselPlanes"></div></div>
+<div class="section" id="planes"><div class="sec-head"><h2>${SI('planes')}${E(S.planes)}</h2></div><div class="carousel" id="carouselPlanes"></div></div>
 <div class="section" id="modelos"><div class="sec-head"><h2>${SI('modelos')}${E(S.modelos)}</h2><span id="contador"></span></div><div class="carousel" id="carouselModelos"></div></div>
 <div class="section" id="portafolio"><div class="sec-head"><h2>${SI('portafolio')}${E(S.portafolio)}</h2></div><div class="carousel" id="carouselPorta"></div></div>
 <div class="section" id="skills"><div class="sec-head"><h2>${SI('skills')}${E(S.skills||'Skills')}</h2></div><div class="sk-grid">${(D.skills||[]).map(k=>`<div class="sk"><img src="${E(k.img)}" alt="${E(k.nombre)}" loading="lazy" onerror="this.style.visibility='hidden'"><span>${E(k.nombre)}</span></div>`).join('')}</div></div>
@@ -760,26 +729,14 @@ const hay=o=>norm([o.nombre,o.titulo,o.plan,o.keys,o.precio].join(' '));
 const tokOk=(h,hw,t)=>h.includes(t)||(t.length>=4&&hw.some(w=>w.length>=3&&lev(w,t)<=1));
 const hexRGB=h=>{h=String(h||'').replace('#','');if(h.length===3)h=h.replace(/./g,'$&$&');const n=parseInt(h,16);return h.length===6&&!isNaN(n)?[n>>16&255,n>>8&255,n&255].join(','):''};
 const precioH=t=>{const m=String(t==null?'':t).match(/^(\D*?)\s*(\d.*)$/);return m&&m[1]?`<small>${E(m[1])}</small>${E(m[2])}`:E(t)};
-const cPlan=(p,i)=>{const L=String(p.desc||'').split('\n').filter(t=>t.trim());return `<article class="plan-card pa" style="--n:${L.length}${hexRGB(p.acento)?';--pc:'+hexRGB(p.acento):''}"><button type="button" class="pa-h" aria-expanded="false"><span class="pa-name">${E(p.nombre)}</span><i class="pa-chev"></i></button><div class="pa-b"><div class="pa-in"><div class="pa-c"><div class="pa-top"><div class="plan-name">${E(p.nombre)}</div><div class="plan-price">${precioH(p.precio)}</div></div><ul class="plan-list">${L.map((t,k)=>`<li style="--i:${k}">${E(t)}</li>`).join('')}</ul><button class="btn-glow" data-plan="${i}">Seleccionar plan${PLANE}</button></div></div></div></article>`};
+const cPlan=(p,i)=>{const L=String(p.desc||'').split('\n').filter(t=>t.trim());return `<div class="plan-card" style="--n:${L.length}${hexRGB(p.acento)?';--pc:'+hexRGB(p.acento):''}"><div class="plan-head"><div class="plan-tx"><div class="plan-name">${E(p.nombre)}</div><div class="plan-price">${precioH(p.precio)}</div></div></div><div class="plan-sep"></div><ul class="plan-list">${L.map((t,k)=>`<li style="--i:${k}">${E(t)}</li>`).join('')}</ul><button class="btn-glow" data-plan="${i}">Seleccionar plan${PLANE}</button></div>`};
 const pcs=o=>hexRGB(o.acento)?` style="--pc:${hexRGB(o.acento)}"`:'';
 const cMod=(m,i)=>`<div class="model-card gcard"${pcs(m)}>${pic(m)}<div class="card-info"><b>${E(m.titulo)}</b><span>${E(m.precio)}</span></div><button class="btn-glow" data-mod="${i}">Seleccionar modelo${PLANE}</button></div>`;
 const cPor=p=>`<div class="bg-card gcard"${pcs(p)}>${pic(p)}<div class="label">${E(p.nombre)} <small>${E(p.plan)}</small></div></div>`;
 const revObs=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const t=e.target;t.classList.add('in');if(t.classList.contains('carousel')){t.dataset.seen=1;t.querySelectorAll('.rv').forEach(k=>k.classList.add('in'))}revObs.unobserve(t)}),{threshold:.12,rootMargin:'0px 0px -6% 0px'});
-function reveal(){document.querySelectorAll('.plan-card,.gcard,.pregunta-card').forEach(el=>{if(el.dataset.vo)return;el.dataset.vo=1;visObs.observe(el)});document.querySelectorAll('.sec-head,.about>*,.sk,.model-card,.bg-card,.pregunta-card,.cta>*').forEach((el,i)=>{if(el.dataset.rv)return;el.dataset.rv=1;el.classList.add('rv');const sib=[...el.parentNode.children].indexOf(el);el.style.setProperty('--d',Math.min(sib,6)*.09+'s');const car=el.closest('.carousel');if(car){if(car.dataset.seen)el.classList.add('in');else revObs.observe(car)}else revObs.observe(el)})}
+function reveal(){document.querySelectorAll('.plan-card,.gcard,.pregunta-card').forEach(el=>{if(el.dataset.vo)return;el.dataset.vo=1;visObs.observe(el)});document.querySelectorAll('.sec-head,.about>*,.sk,.plan-card,.model-card,.bg-card,.pregunta-card,.cta>*').forEach((el,i)=>{if(el.dataset.rv)return;el.dataset.rv=1;el.classList.add('rv');const sib=[...el.parentNode.children].indexOf(el);el.style.setProperty('--d',Math.min(sib,6)*.09+'s');const car=el.closest('.carousel');if(car){if(car.dataset.seen)el.classList.add('in');else revObs.observe(car)}else revObs.observe(el)})}
 const visObs=new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle('vis',e.isIntersecting)),{rootMargin:'80px'});
 const VM={};
-/* Planes: acordeón. Cerrado solo muestra el nombre; al abrir se despliega y entran precio, características y botón */
-const ACC={init:false,k:null,vis:false,hover:false,pause:0};
-const accEl=()=>$('carouselPlanes'),accDesk=()=>matchMedia('(min-width:900px)').matches;
-function accOpen(i,user){const g=accEl();[...g.children].forEach((c,k)=>{if(!c.classList.contains('pa'))return;const on=k===i;c.classList.toggle('open',on);const h=c.querySelector('.pa-h');if(h)h.setAttribute('aria-expanded',on)});
- if(user){ACC.pause=Date.now()+12000;if(!accDesk()){const c=g.children[i];setTimeout(()=>c&&c.scrollIntoView({behavior:'smooth',block:'nearest'}),420)}}}
-function accAuto(){setInterval(()=>{const g=accEl();if(!g||!accDesk()||!ACC.vis||ACC.hover||document.hidden||Date.now()<ACC.pause||document.body.classList.contains('menu-open'))return;
- const n=g.querySelectorAll('.pa').length;if(n<2)return;const cur=[...g.children].findIndex(c=>c.classList.contains('open'));accOpen((cur+1)%n)},5200)}
-function planAnim(){const g=accEl();if(!g)return;const k=g.dataset.k;
- if(!ACC.init){ACC.init=true;ACC.k=k;
-  g.addEventListener('mouseenter',()=>ACC.hover=true);g.addEventListener('mouseleave',()=>ACC.hover=false);
-  const io=new IntersectionObserver(es=>{const r=es[0].isIntersecting;if(r&&!ACC.vis&&!g.querySelector('.open'))accOpen(0);ACC.vis=r},{threshold:.3});io.observe(g);accAuto();return}
- if(k!==ACC.k){ACC.k=k;if(g.querySelector('.pa'))accOpen(0)}}
 const LIM=10,TXT={carouselModelos:'modelos',carouselPorta:'portafolio'};
 ['carouselModelos','carouselPorta'].forEach(id=>{const c=$(id);if(!c)return;const b=document.createElement('button');b.type='button';b.className='vermas none';c.insertAdjacentElement('afterend',b);VM[id]=b;b.onclick=()=>abrirTodos(id)});
 function vmUpd(id,n){const b=VM[id];if(!b)return;b.dataset.t=n;b.classList.toggle('none',n<=LIM);b.innerHTML='Ver todos ('+n+') <i></i>'}
@@ -810,7 +767,7 @@ function pintar(q,exacto){
   const a=fill('carouselPlanes',D.planes,cPlan,'No hay planes con esa palabra clave.');
   const b=fill('carouselModelos',D.modelos,cMod,'No hay modelos con esa palabra clave.',LIM);
   const c=fill('carouselPorta',D.portafolio,cPor,'No hay trabajos con esa palabra clave.',LIM);
-  contador.textContent=b+' modelos';vmUpd('carouselModelos',b);vmUpd('carouselPorta',c);fixImgs();reveal();planAnim();return{planes:a,modelos:b,portafolio:c};
+  contador.textContent=b+' modelos';vmUpd('carouselModelos',b);vmUpd('carouselPorta',c);fixImgs();reveal();return{planes:a,modelos:b,portafolio:c};
 }
 /* Cada plan, modelo y trabajo del portafolio aporta palabras clave automáticamente */
 const STOP=new Set('de del la el los las y e o con para en un una al por que plan planes modelo modelos web sitio pagina'.split(' '));
@@ -866,6 +823,39 @@ generarTags();pintar('');
 let tmr;buscador.addEventListener('input',()=>{const q=buscador.value.trim();searchBox.classList.toggle('has-text',!!q);sugerir();clearTimeout(tmr);tmr=setTimeout(()=>pintar(q,false),140)});
 buscador.addEventListener('focus',sugerir);
 
+/* Carruseles (planes, modelos, portafolio): flechas y tarjeta "seleccionada".
+   Celular/tablet táctil: la que queda al centro. PC/laptop: la que está bajo el mouse (si no hay mouse encima, la del medio). */
+(function(){
+  const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches,fino=matchMedia('(hover:hover) and (pointer:fine)'),tactil=matchMedia('(pointer:coarse)'),movil=()=>matchMedia('(max-width:899px)').matches;
+  const CARD='.plan-card,.gcard';
+  function iniciar(id){
+    const el=$(id);if(!el)return;const head=el.parentNode.querySelector('.sec-head');
+    const cards=()=>[...el.children].filter(c=>c.matches(CARD));
+    let raf=0,mx=-1,my=-1,dentro=false;
+    const sel=c=>{cards().forEach(k=>k.classList.toggle('sel',k===c));el.classList.toggle('selm',!!c)};
+    const medio=()=>{const r=el.getBoundingClientRect(),cx=r.left+r.width/2;let best=null,bd=1e9;cards().forEach(k=>{const b=k.getBoundingClientRect(),d=Math.abs(b.left+b.width/2-cx);if(d<bd){bd=d;best=k}});return best};
+    const upd=()=>{raf=0;let c=null;
+      if(fino.matches&&dentro&&mx>=0){const t=document.elementFromPoint(mx,my),k=t&&t.closest?t.closest(CARD):null;if(k&&k.parentNode===el)c=k}
+      sel(c||medio())};
+    const sched=()=>{if(!raf)raf=requestAnimationFrame(upd)};
+    el.addEventListener('scroll',sched,{passive:true});
+    el.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dentro=true;sched()});
+    el.addEventListener('mouseleave',()=>{dentro=false;mx=-1;sched()});
+    el.addEventListener('focusin',e=>{const c=e.target.closest(CARD);if(c&&c.parentNode===el)sel(c)});
+    new MutationObserver(sched).observe(el,{childList:true});addEventListener('resize',sched);addEventListener('load',sched);sched();
+    const centrar=c=>{const r=c.getBoundingClientRect(),b=el.getBoundingClientRect();el.scrollTo({left:el.scrollLeft+(r.left+r.width/2)-(b.left+el.clientWidth/2),behavior:reduce?'auto':'smooth'})};
+    /* en táctil, el primer toque en una tarjeta que no está al centro solo la selecciona (no abre WhatsApp) */
+    el.addEventListener('click',e=>{if(!tactil.matches)return;const c=e.target.closest(CARD);if(c&&c.parentNode===el&&!c.classList.contains('sel')){e.preventDefault();e.stopPropagation();centrar(c)}},true);
+    if(!head)return;
+    const ar=document.createElement('div');ar.className='car-arrows';ar.innerHTML='<button type="button" aria-label="Anterior">‹</button><button type="button" aria-label="Siguiente">›</button>';head.appendChild(ar);
+    const go=d=>{const cs=cards();if(!cs.length)return;
+      if(movil()){const cur=Math.max(0,cs.indexOf(el.querySelector('.sel')||medio()));centrar(cs[Math.max(0,Math.min(cs.length-1,cur+d))])}
+      else{const w=cs[0].offsetWidth+(parseFloat(getComputedStyle(el).columnGap)||26),max=el.scrollWidth-el.clientWidth,i=Math.round(el.scrollLeft/w);el.scrollTo({left:Math.max(0,Math.min(max,(i+d)*w)),behavior:reduce?'auto':'smooth'})}};
+    ar.children[0].onclick=()=>go(-1);ar.children[1].onclick=()=>go(1);
+    const chk=()=>ar.classList.toggle('off',el.scrollWidth<=el.clientWidth+4);chk();addEventListener('resize',chk);addEventListener('load',chk);new MutationObserver(chk).observe(el,{childList:true});
+  }
+  ['carouselPlanes','carouselModelos','carouselPorta'].forEach(iniciar);
+})();
 buscador.addEventListener('keydown',e=>{
   const n=sugL.length;
   if(e.key==='ArrowDown'||e.key==='ArrowUp'){if(!n)return;e.preventDefault();sugI=(sugI+(e.key==='ArrowDown'?1:-1)+n+1)%(n+1);if(sugI===n)sugI=-1;[...sug.children].forEach((c,i)=>c.classList.toggle('on',i===sugI));if(sugI>=0)sug.children[sugI].scrollIntoView({block:'nearest'});return}
@@ -879,7 +869,6 @@ clearBtn.addEventListener('click',()=>{buscador.value='';searchBox.classList.rem
 /* Selección → WhatsApp */
 function elegir(titulo,msg,n,p){cerrarTodos();const u=wa(fill(msg,n,p));$('tituloCotizar').textContent=fill(titulo,n,p);$('btnCotizar').href=u;$('cotizar').scrollIntoView({behavior:'smooth'});setTimeout(()=>window.open(u,'_blank'),600)}
 document.addEventListener('click',e=>{
-  const h=e.target.closest('.pa-h');if(h){const g=accEl(),c=h.parentNode,i=[...g.children].indexOf(c);if(c.classList.contains('open')){if(!accDesk()){c.classList.remove('open');h.setAttribute('aria-expanded',false)}}else accOpen(i,true);return}
   const b=e.target.closest('button[data-plan],button[data-mod]');
   if(b){if(b.dataset.plan!=null){const p=D.planes[b.dataset.plan];elegir(C.tituloPlan,C.msgPlan,p.nombre,p.precio)}else{const m=D.modelos[b.dataset.mod];elegir(C.tituloModelo,C.msgModelo,m.titulo,m.precio)}return}
   const q=e.target.closest('.pregunta-card');if(q)q.classList.toggle('open');
