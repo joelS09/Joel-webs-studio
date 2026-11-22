@@ -540,23 +540,8 @@ html body.menu-ready #drawer .ring{animation-play-state:running}
 .search:before{animation-duration:calc(var(--giro,3s)*.65)}
 
 /* ===== Planes: tarjetas que se arman una a una ===== */
-#carouselPlanes.plans-grid{display:grid;grid-template-columns:1fr;gap:20px;overflow:visible;padding:8px 16px 14px 0;margin:0;scroll-snap-type:none}
-#carouselPlanes>.plan-card{flex:none;width:auto;max-width:none;min-width:0;padding:30px 24px 26px}
-.plans-grid .plan-head{display:block}
-.plans-grid .plan-tx{width:100%}
-html .plans-grid .plan-name{font-size:14px;letter-spacing:.14em}
-html .plans-grid .plan-price{font-size:clamp(60px,19vw,76px) !important;margin:10px 0 0 !important;letter-spacing:-2px !important;line-height:1 !important}
-html .plans-grid .plan-price small{font-size:clamp(22px,6vw,28px);transform:translateY(-.6em);letter-spacing:0}
-.plans-grid .plan-sep{margin:20px 0 4px}
-.plans-grid .plan-list li{font-size:14.5px}
-.plans-grid .plan-card .btn-glow{margin-top:auto}
-@media (min-width:700px){#carouselPlanes.plans-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;padding-right:16px}}
-@media (min-width:900px){
- #carouselPlanes.plans-grid{padding:8px 0 14px;margin:0;gap:24px}
- #carouselPlanes>.plan-card{padding:34px 26px 28px}
-}
-@media (min-width:1180px){#carouselPlanes.plans-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}
- html .plans-grid .plan-price{font-size:clamp(54px,4.4vw,70px) !important}}
+#carouselPlanes>.plan-card{padding:30px 24px 26px}
+@media (min-width:900px){#carouselPlanes>.plan-card{padding:34px 26px 28px}}
 /* estado inicial (oculto) → se muestra al añadir .in, con retrasos escalonados */
 html .plan-card{transition:opacity .6s ease,translate .7s cubic-bezier(.2,.8,.2,1),scale .7s cubic-bezier(.2,.8,.2,1),transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .3s}
 .plan-card:not(.in){opacity:0;translate:0 36px;scale:.96}
@@ -576,15 +561,21 @@ html .plan-card{transition:opacity .6s ease,translate .7s cubic-bezier(.2,.8,.2,
 .plan-card.in .btn-glow:hover{transition-delay:0s}
 
 /* ===== Skills: tarjetas grandes ===== */
-.sk-grid{grid-template-columns:repeat(var(--sk-cols,2),minmax(0,1fr)) !important;gap:14px !important;padding-right:16px}
-.sk,html.nc .sk{gap:14px;padding:26px 10px 22px;border-radius:22px;font-size:16px;font-weight:700;color:rgb(var(--fg))}
-.sk img{width:clamp(72px,24vw,104px);height:clamp(72px,24vw,104px)}
+.sk-grid{grid-template-columns:repeat(var(--sk-cols,4),minmax(0,1fr)) !important;gap:10px !important;padding-right:16px}
+.sk,html.nc .sk{gap:10px;padding:18px 4px 14px;border-radius:18px;font-size:13px;font-weight:700;color:rgb(var(--fg))}
+.sk img{width:clamp(48px,15vw,70px);height:clamp(48px,15vw,70px)}
 @media (min-width:900px){
  .sk-grid{--sk-cols:4;gap:22px !important;padding-right:0}
  .sk,html.nc .sk{padding:38px 16px 30px;font-size:19px;border-radius:26px}
  .sk img{width:128px;height:128px}
 }
 html[data-theme=light] .sk img{padding:8px;border-radius:18px}
+
+/* Precio grande en el carrusel de planes */
+html #carouselPlanes .plan-name{font-size:14px;letter-spacing:.14em}
+html #carouselPlanes .plan-price{font-size:clamp(64px,19vw,76px) !important;margin:10px 0 0 !important;letter-spacing:-2px !important;line-height:1 !important}
+html #carouselPlanes .plan-price small{font-size:clamp(22px,6vw,28px);transform:translateY(-.6em);letter-spacing:0}
+@media (min-width:900px){html #carouselPlanes .plan-price{font-size:clamp(64px,4.6vw,78px) !important}}
 </style>
 </head>
 <body>
@@ -693,10 +684,10 @@ $('app').innerHTML=`
 <div class="about-tx">${(P.texto||'').split('\n').filter(Boolean).map(t=>`<p>${E(t)}</p>`).join('')}</div>
 <div class="pasos">${(P.pasos||[]).map(t=>`<div class="paso">${E(t)}</div>`).join('')}</div>
 <div class="intro-cierre"><p>${E((P.cierre||'').replace('{desde}',DESDE))}</p><div class="intro-btns"><a class="btn-glow ghost" href="#planes">${E(P.boton2||'Ver planes')}</a></div></div></section></div>
-<div class="section" id="skills"><div class="sec-head"><h2>${SI('skills')}${E(S.skills||'Skills')}</h2></div><div class="sk-grid">${(D.skills||[]).map(k=>`<div class="sk"><img src="${E(k.img)}" alt="${E(k.nombre)}" loading="lazy" onerror="this.style.visibility='hidden'"><span>${E(k.nombre)}</span></div>`).join('')}</div></div>
-<div class="section" id="planes"><div class="sec-head"><h2>${SI('planes')}${E(S.planes)}</h2></div><div class="plans-grid" id="carouselPlanes"></div></div>
+<div class="section" id="planes"><div class="sec-head"><h2>${SI('planes')}${E(S.planes)}</h2></div><div class="carousel" id="carouselPlanes"></div></div>
 <div class="section" id="modelos"><div class="sec-head"><h2>${SI('modelos')}${E(S.modelos)}</h2><span id="contador"></span></div><div class="carousel" id="carouselModelos"></div></div>
 <div class="section" id="portafolio"><div class="sec-head"><h2>${SI('portafolio')}${E(S.portafolio)}</h2></div><div class="carousel" id="carouselPorta"></div></div>
+<div class="section" id="skills"><div class="sec-head"><h2>${SI('skills')}${E(S.skills||'Skills')}</h2></div><div class="sk-grid">${(D.skills||[]).map(k=>`<div class="sk"><img src="${E(k.img)}" alt="${E(k.nombre)}" loading="lazy" onerror="this.style.visibility='hidden'"><span>${E(k.nombre)}</span></div>`).join('')}</div></div>
 <div class="section" id="preguntas"><div class="sec-head"><h2>${SI('preguntas')}${E(S.preguntas)}</h2></div><div class="preguntas-grid">${D.preguntas.map(q=>`<div class="pregunta-card"><h3>${E(q.q)}</h3><div class="ans"><div><p>${E(q.a)}</p></div></div></div>`).join('')}</div></div>
 <div class="cta" id="cotizar"><h2 id="tituloCotizar">${E(C.titulo)}</h2><a id="btnCotizar" class="btn-glow" href="${wa(C.msgGeneral)}">${E(C.boton)}${PLANE}</a></div>`;
 
@@ -796,6 +787,27 @@ generarTags();pintar('');
 let tmr;buscador.addEventListener('input',()=>{const q=buscador.value.trim();searchBox.classList.toggle('has-text',!!q);sugerir();clearTimeout(tmr);tmr=setTimeout(()=>pintar(q,false),140)});
 buscador.addEventListener('focus',sugerir);
 
+/* Carruseles: flechas en PC y, en celulares, un plan por segundo (al llegar al final regresa al inicio). Animación propia con rAF: fluida y sin pelear con scroll-snap */
+(function(){
+  const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches,touch=matchMedia('(pointer:coarse)').matches;
+  const gapOf=el=>parseFloat(getComputedStyle(el).columnGap)||14;
+  const cardW=el=>{const k=el.children[0];return k?k.offsetWidth+gapOf(el):0};
+  const ease=t=>.5-Math.cos(Math.PI*t)/2;
+  function slide(el,to,ms){
+    cancelAnimationFrame(el._raf);
+    const from=el.scrollLeft,dist=to-from;
+    if(Math.abs(dist)<1||reduce){el.scrollLeft=to;return}
+    el.classList.add('moving');
+    const t0=performance.now();
+    const step=t=>{const k=Math.min(1,Math.max(0,(t-t0)/ms));el.scrollLeft=from+dist*ease(k);if(k<1)el._raf=requestAnimationFrame(step);else el.classList.remove('moving')};
+    el._raf=requestAnimationFrame(step);
+  }
+  const cp=$('carouselPlanes'),head=cp&&cp.parentNode.querySelector('.sec-head');
+  if(cp&&head){const ar=document.createElement('div');ar.className='car-arrows';ar.innerHTML='<button type="button" aria-label="Anterior">‹</button><button type="button" aria-label="Siguiente">›</button>';head.appendChild(ar);
+    const [a,b]=ar.children,mover=d=>{const w=cardW(cp);if(!w)return;const max=cp.scrollWidth-cp.clientWidth,i=Math.round(cp.scrollLeft/w);slide(cp,Math.max(0,Math.min(max,(i+d)*w)),520)};
+    a.onclick=()=>mover(-1);b.onclick=()=>mover(1);
+    const chk=()=>ar.classList.toggle('off',cp.scrollWidth<=cp.clientWidth+4);chk();addEventListener('resize',chk);addEventListener('load',chk);new MutationObserver(chk).observe(cp,{childList:true})}
+  })();
 buscador.addEventListener('keydown',e=>{
   const n=sugL.length;
   if(e.key==='ArrowDown'||e.key==='ArrowUp'){if(!n)return;e.preventDefault();sugI=(sugI+(e.key==='ArrowDown'?1:-1)+n+1)%(n+1);if(sugI===n)sugI=-1;[...sug.children].forEach((c,i)=>c.classList.toggle('on',i===sugI));if(sugI>=0)sug.children[sugI].scrollIntoView({block:'nearest'});return}
@@ -820,7 +832,7 @@ const secs=D.menu.map(m=>$(m.id)).filter(Boolean),links=[...document.querySelect
 let tops=[],cur0=null,tick=false;
 let heroH=innerHeight,parado=false,mx=0,vo=-1;const veil=$('veil'),vid=$('videoFondo');
 let skT=0;
-const medir=()=>{heroH=$('hero').offsetHeight||innerHeight;skT=$('skills')?$('skills').offsetTop:heroH*2;mx=document.documentElement.scrollHeight-innerHeight;tops=secs.map(s=>[s.id,s.offsetTop])};
+const medir=()=>{heroH=$('hero').offsetHeight||innerHeight;skT=$('planes')?$('planes').offsetTop:heroH*2;mx=document.documentElement.scrollHeight-innerHeight;tops=secs.map(s=>[s.id,s.offsetTop])};
 function onScroll(){
   const y=scrollY;
   pg.style.transform='scaleX('+(mx>0?y/mx:0)+')';
