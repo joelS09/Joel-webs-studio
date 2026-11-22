@@ -51,17 +51,17 @@ window.SITE_DATA={
       "nombre": "Plan Básico",
       "icono": "imagenes/plan-plata.webp",
       "acento": "#c9d1dc",
-      "precio": "S/70",
-      "desc": "Una página simple y sencilla. \n5 Secciones. \n1 Página. \nEntrega en una semana. \nDominio Github. \nLugar en Google (apareces en los resultados de búsqueda de Google) Pero no te aseguramos el primer lugar ",
+      "precio": "S/75",
+      "desc": "Página web\nPresencia en Internet\n5 secciones\nDiseño minimalista y formal",
       "img": "imagenes/590800.jpg",
       "grad": "linear-gradient(135deg,#222,#000)"
     },
     {
-      "nombre": "Plan Básico S",
+      "nombre": "Plan Medio ",
       "icono": "imagenes/plan-oro.webp",
       "acento": "#f2c14e",
-      "precio": "S/100",
-      "desc": "Una página cencilla pero profesional. \n5 Secciones o más. \n2 Páginas (si es necesario). \nEntrega en una semana. \nDominio Github. \nAdmin. \nLugar en Google (Sales en los resultados de búsqueda de Google). ",
+      "precio": "S/90",
+      "desc": "Página web\nPresencia en Internet\n5 secciones\nDiseño persuasivo",
       "img": "imagenes/611928.jpg",
       "grad": "linear-gradient(135deg,#00ff88,#0055ff)"
     },
@@ -69,17 +69,17 @@ window.SITE_DATA={
       "nombre": "Plan Pro",
       "icono": "imagenes/plan-platino.webp",
       "acento": "#b48cff",
-      "precio": "S/200",
-      "desc": "Una página profesional y elegante. \n5 Secciones o más. \n3 Páginas (si es necesario). \nEntrega en una semana. \nDominio Github. \nAdmin. \nLugar en Google (Sales en los resultados de búsqueda de Google). \nAnimaciones. ",
+      "precio": "S/160",
+      "desc": "Página web\nPresencia en Internet 5 a más secciones\nDiseño llamativo e innovador\nMicroanimaciones",
       "img": "imagenes/590779.jpg",
       "grad": "linear-gradient(135deg,#ff7a00,#000)"
     },
     {
-      "nombre": "Plan Ultra",
+      "nombre": "Plan Premium ",
       "icono": "imagenes/plan-diamante.webp",
       "acento": "#7cc8ff",
-      "precio": "S/250",
-      "desc": "Una página premium y profesional. \n7 Secciones o más. \n5 Páginas (si es necesario). \nEntrega en una semana. \nDominio Github. \nAdmin. \nLugar en Google (Sales en los resultados de búsqueda de Google). \nAnimaciones VIP. \nEstilo Premium. ",
+      "precio": "S/200",
+      "desc": "Página web\nPresencia en Internet\n7 secciones \nDiseño creativo\nAnimaciones de alto nivel",
       "img": "imagenes/590849.jpg",
       "grad": "linear-gradient(135deg,#ff0055,#000)"
     }
@@ -131,10 +131,10 @@ window.SITE_DATA={
     "botonColor": "#00ffff"
   },
   "presentacion": {
-    "seccion": "La web que necesitas para tu negocio esta a tu alcance ",
-    "etiqueta": "HOLA, SOY JOEL",
-    "titulo": "Tu negocio merece verse como el número uno.",
-    "texto": "Soy Joel, programador web. Me dedico a crear sitios web para negocios, emprendedores y empresas que quieren dejar de ser uno más y empezar a recibir clientes todos los días.\nHoy tus clientes te buscan en Google desde el celular. Si no te encuentran, le compran a tu competencia, aunque tú seas mejor. Cada día sin web es un cliente que se va a otro lado.\nPor eso creo webs rápidas, elegantes y listas para vender, y me encargo de todo: diseño, programación y publicación.",
+    "seccion": "Te ayudamos a crecer ",
+    "etiqueta": "Hola soy Joel",
+    "titulo": "",
+    "texto": "\nUso mi pasión y mis habilidades para crear productos y experiencias digitales.\nClientes nacionales e internacionales confían en mi para el diseño, desarrollo y publicación de sus proyectos digitales ambiciosos.\nTrabajo con mis experiencias y conocimientos digitales para ofrecer un buen servicio para satisfacer las expectativas de mis clientes. ",
     "pasos": [],
     "cierre": "Planes desde {desde}. Con un solo cliente nuevo, tu web ya puede pagarse sola. Elige tu plan y empecemos hoy.",
     "boton2": "Cotizar"
@@ -142,15 +142,15 @@ window.SITE_DATA={
   "skills": [
     {
       "nombre": "HTML",
-      "img": "imagenes/skills/html.png"
+      "img": "imagenes/628436.png"
     },
     {
       "nombre": "CSS",
-      "img": "imagenes/skills/css.png"
+      "img": "imagenes/628437.png"
     },
     {
       "nombre": "JS",
-      "img": "imagenes/skills/js.png"
+      "img": "imagenes/628438.png"
     },
     {
       "nombre": "Python",
@@ -162,7 +162,7 @@ window.SITE_DATA={
     },
     {
       "nombre": "C",
-      "img": "imagenes/skills/c.png"
+      "img": "imagenes/628433.png"
     },
     {
       "nombre": "C++",
