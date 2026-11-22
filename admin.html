@@ -37,7 +37,7 @@ input[type=color]{height:40px;padding:3px}
 <body>
 <div id="login"><div><h2>Admin · Joel Webs</h2><input id="pw" type="password" placeholder="Clave" autocomplete="current-password"><button id="go">Entrar</button></div></div>
 <header><img src="imagenes/612999.jpg" alt="" style="width:26px;height:26px;border-radius:7px;object-fit:cover" onerror="this.style.display='none'"><b>Admin</b><button class="g" id="bPrev">Vista previa</button><button class="g" id="bDown">Descargar</button><button class="g" id="bSave">Guardar en carpeta</button><button id="bGh">Publicar en GitHub</button></header>
-<main><p class="note">Edita el contenido y pulsa <b>Publicar en GitHub</b>: sube las imágenes nuevas a <b>imagenes/</b> y actualiza <b>content/data.js</b> directamente en tu repositorio (Cloudflare Pages lo publica solo). Primero completa <b>Conexión con GitHub</b>. Alternativas sin GitHub: <b>Guardar en carpeta</b> (Chrome/Edge) o <b>Descargar</b>.</p><div id="m"></div></main>
+<main><p class="note">Edita el contenido y pulsa <b>Publicar en GitHub</b>: sube los archivos nuevos: imágenes a <b>imagenes/</b> (logos de skills a <b>imagenes/skills/</b>) y videos a <b>videos/</b>; y actualiza <b>content/data.js</b> directamente en tu repositorio (Cloudflare Pages lo publica solo). Primero completa <b>Conexión con GitHub</b>. Alternativas sin GitHub: <b>Guardar en carpeta</b> (Chrome/Edge) o <b>Descargar</b>.</p><div id="m"></div></main>
 <div id="msg"></div>
 <script src="content/data.js"></script>
 <script>
@@ -57,16 +57,16 @@ const clone=o=>JSON.parse(JSON.stringify(o));
 let D=clone(window.SITE_DATA),files={},dir=null,abierto='marca';
 const G="linear-gradient(135deg,#222,#000)";
 const S=[
-{t:'Nombre, logo y video',p:'marca',k:'obj',f:[['nombre','Nombre'],['lema','Frase corta (menú lateral)'],['logo','Logo','file'],['video','Video de fondo (animación del inicio)','file']]},
+{t:'Nombre, logo y video',p:'marca',k:'obj',f:[['nombre','Nombre'],['lema','Frase corta (menú lateral)'],['logo','Logo','file'],['video','Fondo MODO OSCURO (video o imagen)','file'],['videoClaro','Fondo MODO CLARO (video o imagen; si lo dejas vacío usa el de modo oscuro)','file']]},
 {t:'Colores de toda la página',p:'estilo',k:'obj',f:[['tema','Combinación lista','select',[['original','Verde neón (por defecto)'],['verde-amarillo','Verde y amarillo'],['verde-blanco','Verde y blanco'],['azul-verde','Azul eléctrico y verde'],['morado-rosa','Morado y rosa'],['azul-cian','Azul y cian'],['rojo-naranja','Rojo y naranja'],['personalizado','Personalizado (tus 3 colores de abajo)']]],['temaAcento','Color principal: botones, bordes, brillos, menú, buscador (al cambiarlo pasa a Personalizado)','color'],['temaAcento2','Color secundario (al cambiarlo pasa a Personalizado)','color'],['temaFondo','Color de fondo de la página (al cambiarlo pasa a Personalizado)','color']]},
 {t:'Inicio (textos)',p:'hero',k:'obj',f:[['titulo','Título'],['texto','Texto','area'],['placeholder','Texto del buscador']]},
 {t:'Sobre mí (dentro de Inicio)',p:'presentacion',k:'obj',f:[['seccion','Título de la sección (ej. Sobre mí / About)'],['etiqueta','Etiqueta pequeña'],['titulo','Título'],['texto','Texto (cada salto de línea es un párrafo)','area'],['cierre','Frase final ({desde} = precio del plan más barato; se actualiza solo al editar los planes)','area'],['boton2','Texto del botón']]},
 {t:'Sobre mí: pasos (se numeran solos)',p:'presentacion.pasos',k:'strs'},
 {t:'Skills (logo y nombre)',p:'skills',k:'arr',f:[['nombre','Nombre'],['img','Logo','file']],n:{nombre:'',img:''}},
 {t:'Títulos de secciones',p:'secciones',k:'obj',f:[['planes','Planes'],['modelos','Modelos'],['portafolio','Portafolio'],['preguntas','Preguntas'],['skills','Skills']]},
-{t:'Planes',p:'planes',k:'arr',f:[['nombre','Nombre'],['precio','Precio'],['desc','Descripción','area'],['keys','Palabras clave extra (opcional, el nombre ya cuenta)'],['icono','Ícono del plan (se ve arriba de la tarjeta)','file'],['acento','Color de la tarjeta (borde, luz LED y checks)','color'],['img','Imagen','file']],n:{nombre:'',precio:'',desc:'',keys:'',icono:'',acento:'#c9d1dc',img:'',grad:G}},
-{t:'Modelos (el nombre y las palabras clave generan las predicciones y tarjetas del buscador)',p:'modelos',k:'arr',f:[['titulo','Título'],['precio','Precio'],['keys','Palabras clave separadas por espacio'],['acento','Color de la tarjeta (luz LED al seleccionar)','color'],['img','Imagen','file']],n:{titulo:'',precio:'',keys:'',acento:'#7cc8ff',img:'',grad:G}},
-{t:'Portafolio',p:'portafolio',k:'arr',f:[['nombre','Nombre'],['plan','Plan'],['keys','Palabras clave extra (opcional, el nombre ya cuenta)'],['acento','Color de la tarjeta (luz LED al seleccionar)','color'],['img','Imagen','file']],n:{nombre:'',plan:'',keys:'',acento:'#b48cff',img:'',grad:G}},
+{t:'Planes',p:'planes',k:'arr',f:[['nombre','Nombre'],['precio','Precio'],['desc','Descripción','area'],['keys','Palabras clave extra (opcional, el nombre ya cuenta)'],['acento','Color de la tarjeta (borde, luz LED y checks)','color']],n:{nombre:'',precio:'',desc:'',keys:'',acento:'#c9d1dc',grad:G}},
+{t:'Modelos (el nombre y las palabras clave generan las predicciones y tarjetas del buscador)',p:'modelos',k:'arr',f:[['titulo','Título'],['precio','Precio'],['keys','Palabras clave separadas por espacio'],['acento','Color de la tarjeta (luz LED al seleccionar)','color'],['img','Imagen de portada','file'],['video','Video (opcional: si lo pones, se ve el video en lugar de la imagen)','file']],n:{titulo:'',precio:'',keys:'',acento:'#7cc8ff',img:'',video:'',grad:G}},
+{t:'Portafolio',p:'portafolio',k:'arr',f:[['nombre','Nombre'],['plan','Plan'],['keys','Palabras clave extra (opcional, el nombre ya cuenta)'],['acento','Color de la tarjeta (luz LED al seleccionar)','color'],['img','Imagen de portada','file'],['video','Video (opcional: si lo pones, se ve el video en lugar de la imagen)','file']],n:{nombre:'',plan:'',keys:'',acento:'#b48cff',img:'',video:'',grad:G}},
 {t:'Estilo y contorno giratorio',p:'estilo',k:'obj',f:[['visual','Estilo visual','select',[['clasico','Clásico'],['neon-cristal','Neón cristal (tarjetas y menú de cristal con contorno luminoso)']]],['giroVelocidad','Segundos por vuelta del contorno LED (3 = normal, 1.5 = rápido, 5 = lento; 0 = sin giro)']]},
 {t:'Preguntas frecuentes',p:'preguntas',k:'arr',f:[['q','Pregunta'],['a','Respuesta','area']],n:{q:'',a:''}},
 {t:'WhatsApp y mensajes',p:'contacto',k:'obj',f:[['whatsapp','WhatsApp (con código de país, sin +)'],['titulo','Título','area'],['boton','Texto del botón'],['msgGeneral','Mensaje general'],['tituloPlan','Título al elegir plan ({n} nombre, {p} precio)','area'],['msgPlan','Mensaje al elegir plan'],['tituloModelo','Título al elegir modelo','area'],['msgModelo','Mensaje al elegir modelo']]},
@@ -76,6 +76,9 @@ function toast(t){const m=$('msg');m.textContent=t;m.style.display='block';clear
 const dirty=()=>{try{localStorage.setItem('joelwebs_draft',JSON.stringify(D))}catch(e){}};
 function el(tag,cls,txt){const e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e}
 function btn(t,fn,c){const b=el('button',c||'',t);b.onclick=fn;return b}
+/* Carpeta donde se guarda cada archivo subido: videos → videos/ · logos de skills → imagenes/skills/ · el resto de imágenes → imagenes/ */
+const ES_VIDEO=x=>/^video\//.test(x.type)||/\.(mp4|webm|mov|m4v|ogv)$/i.test(x.name);
+const carpeta=(o,x)=>ES_VIDEO(x)?'videos/':(Array.isArray(D.skills)&&D.skills.includes(o)?'imagenes/skills/':'imagenes/');
 function inp(o,key,label,kind,opts){
   const w=el('div'),i=el(kind==='area'?'textarea':kind==='select'?'select':'input');w.append(el('label','',label));
   if(kind==='select')(opts||[]).forEach(x=>i.append(Array.isArray(x)?new Option(x[1],x[0]):new Option(x,x)));
@@ -88,7 +91,7 @@ function inp(o,key,label,kind,opts){
   const show=()=>{th.style.visibility=i.value?'visible':'hidden';if(i.value)th.src=i.value};th.onerror=()=>th.style.visibility='hidden';show();
   i.oninput=()=>{o[key]=i.value;show();dirty()};
   b.onclick=()=>f.click();
-  f.onchange=()=>{const x=f.files[0];if(!x)return;const p='imagenes/'+x.name.replace(/[^\w.\-]/g,'_');files[p]=x;o[key]=p;i.value=p;th.style.visibility='visible';th.src=URL.createObjectURL(x);dirty();toast('Pendiente de guardar: '+p)};
+  f.onchange=()=>{const x=f.files[0];if(!x)return;const p=carpeta(o,x)+x.name.replace(/[^\w.\-]/g,'_');files[p]=x;o[key]=p;i.value=p;th.style.visibility='visible';th.src=URL.createObjectURL(x);dirty();toast('Pendiente de guardar: '+p)};
   r.append(th,i,b,f);w.append(r);return w;
 }
 function mover(a,i,d){const j=i+d;if(j<0||j>=a.length)return;[a[i],a[j]]=[a[j],a[i]];render();dirty()}
@@ -134,7 +137,7 @@ async function guardar(){
   }catch(e){dir=null;if(e.name!=='AbortError')toast('No se guardó: '+e.message)}
 }
 function dl(b,n){const a=el('a');a.href=URL.createObjectURL(b);a.download=n;a.click()}
-function descargar(){dl(new Blob([dataText()],{type:'text/javascript'}),'data.js');Object.keys(files).forEach(p=>dl(files[p],p.split('/').pop()));toast('Copia data.js a content/, y las imágenes a imagenes/')}
+function descargar(){dl(new Blob([dataText()],{type:'text/javascript'}),'data.js');Object.keys(files).forEach(p=>dl(files[p],p.split('/').pop()));toast('Copia data.js a content/; imágenes a imagenes/ (logos de skills a imagenes/skills/) y videos a videos/')}
 const b64=f=>new Promise((ok,no)=>{const r=new FileReader();r.onload=()=>ok(r.result.split(',')[1]);r.onerror=()=>no(new Error('No se pudo leer '+f.name));r.readAsDataURL(f)});
 async function ghPut(c,path,content,msg){
   const base=c.base?c.base.replace(/^\/+|\/+$/g,'')+'/':'',url='https://api.github.com/repos/'+c.repo+'/contents/'+base+path;

@@ -225,7 +225,6 @@ body:not(.ready) .hero>*{animation-play-state:paused}
  #carouselPlanes.carousel{display:flex;gap:26px;overflow-x:auto;padding:44px 56px 84px;margin:-36px -56px -70px;scroll-padding-left:56px;scroll-snap-type:x proximity}
  #carouselPlanes>.plan-card{flex:0 0 clamp(280px,21vw,330px)}
  .car-arrows{display:flex}
- .carousel.collapsed>:nth-child(n+4){display:none}
  .vermas{display:flex}
  .plan-card,.gcard.gcard{flex:none;width:auto;max-width:none}
  .plan-card{padding:34px 28px 28px}
@@ -420,10 +419,10 @@ html[data-theme=light] .mo-sun{opacity:1;transform:none}html[data-theme=light] .
 /* ===== Modo claro ===== */
 nav,.hero{color:rgb(var(--fg))}
 html[data-theme=light]{--bg:#f7fcf7;--bgrgb:247,252,247;--fg:16,24,19;--acc:57,158,57;--onacc:#fff}
-html[data-theme=light]:not(.sv) .hero,html[data-theme=light]:not(.sv) body:not(.sc) nav{--fg:255,255,255;--bgrgb:var(--bgdrgb);--acc:var(--accd);--acc2:var(--acc2d);--onacc:var(--onaccd)}
-html[data-theme=light]:not(.sv) .bgv{background:#06110a}
+html[data-theme=light]:not(.sv):not(.fl) .hero,html[data-theme=light]:not(.sv):not(.fl) body:not(.sc) nav{--fg:255,255,255;--bgrgb:var(--bgdrgb);--acc:var(--accd);--acc2:var(--acc2d);--onacc:var(--onaccd)}
+html[data-theme=light]:not(.sv):not(.fl) .bgv{background:#06110a}
 html[data-theme=light] #veil{background:rgba(var(--bgrgb),.7)}
-html[data-theme=light]:not(.sv) .hero:before{background:linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.45) 70%,rgba(0,0,0,0))}
+html[data-theme=light]:not(.sv):not(.fl) .hero:before{background:linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.45) 70%,rgba(0,0,0,0))}
 html[data-theme=light] .about,html[data-theme=light] .footer,html[data-theme=light] body.sc .logo{text-shadow:none}
 html[data-theme=light] .plan-card,html[data-theme=light] .gcard.gcard,html[data-theme=light] .sk,html[data-theme=light] .pregunta-card{box-shadow:0 12px 32px rgba(30,60,40,.12),0 0 24px rgba(var(--acc),.08),inset 0 1px 0 rgba(255,255,255,.8)}
 html[data-theme=light] .plan-card,html[data-theme=light] .gcard.gcard,html[data-theme=light] .sk{background:radial-gradient(75% 48% at 100% 0%,rgba(var(--acc),.14),transparent 70%),radial-gradient(75% 48% at 0% 100%,rgba(var(--acc),.1),transparent 70%),linear-gradient(165deg,rgba(255,255,255,.82),rgba(255,255,255,.55))}
@@ -434,6 +433,7 @@ html[data-theme=light] .sk img{background:#0e1510;border-radius:12px;padding:5px
 html[data-theme=light].lite .plan-card,html[data-theme=light].lite .gcard.gcard,html[data-theme=light].lite .sk{background:rgba(255,255,255,.9)}
 /* Sin video (no hay archivo, no carga o ahorro de datos): fondo liso según el modo */
 html.sv .bgv,html.sv #veil{display:none !important}
+html.bgimg #videoFondo{display:none !important}#imgFondo[hidden]{display:none !important}#imgFondo{pointer-events:none}
 html.sv body,html.sv.nov body{background:var(--bg)}
 html.sv .hero:before{display:none}
 html.sv .hero h1,html.sv .hero p{text-shadow:none}
@@ -540,26 +540,6 @@ html body.menu-ready #drawer .ring{animation-play-state:running}
 .search:before{animation-duration:calc(var(--giro,3s)*.65)}
 
 /* ===== Planes: tarjetas que se arman una a una ===== */
-#carouselPlanes>.plan-card{padding:30px 24px 26px}
-@media (min-width:900px){#carouselPlanes>.plan-card{padding:34px 26px 28px}}
-/* estado inicial (oculto) → se muestra al añadir .in, con retrasos escalonados */
-html .plan-card{transition:opacity .6s ease,translate .7s cubic-bezier(.2,.8,.2,1),scale .7s cubic-bezier(.2,.8,.2,1),transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .3s}
-.plan-card:not(.in){opacity:0;translate:0 36px;scale:.96}
-.plan-card .plan-name,.plan-card .plan-sep,.plan-card .plan-list li,.plan-card .btn-glow{transition-property:opacity,translate,scale,transform,box-shadow,background;transition-duration:.5s;transition-timing-function:cubic-bezier(.2,.8,.2,1)}
-.plan-card:not(.in) .plan-name{opacity:0;translate:0 10px}
-.plan-card .plan-name{transition-delay:.12s}
-.plan-card:not(.in) .plan-price{opacity:0;scale:.55;transform-origin:left center}
-.plan-card .plan-price{transition:opacity .45s ease .28s,scale .65s cubic-bezier(.3,1.5,.5,1) .28s,transform .3s}
-.plan-card:not(.in) .plan-sep{opacity:0;scale:0 1;transform-origin:left}
-.plan-card .plan-sep{transition-delay:.62s}
-.plan-card:not(.in) .plan-list li{opacity:0;translate:-16px 0}
-.plan-card .plan-list li{transition-delay:calc(.75s + var(--i,0)*.16s)}
-.plan-card .plan-list li:before{transition:scale .4s cubic-bezier(.3,1.6,.5,1) calc(.85s + var(--i,0)*.16s)}
-.plan-card:not(.in) .plan-list li:before{scale:0}
-.plan-card:not(.in) .btn-glow{opacity:0;translate:0 14px}
-.plan-card .btn-glow{transition-delay:calc(.8s + var(--n,3)*.16s)}
-.plan-card.in .btn-glow:hover{transition-delay:0s}
-
 /* ===== Skills: tarjetas grandes ===== */
 .sk-grid{grid-template-columns:repeat(var(--sk-cols,4),minmax(0,1fr)) !important;gap:10px !important;padding-right:16px}
 .sk,html.nc .sk{gap:10px;padding:18px 4px 14px;border-radius:18px;font-size:13px;font-weight:700;color:rgb(var(--fg))}
@@ -571,17 +551,89 @@ html .plan-card{transition:opacity .6s ease,translate .7s cubic-bezier(.2,.8,.2,
 }
 html[data-theme=light] .sk img{padding:8px;border-radius:18px}
 
-/* Precio grande en el carrusel de planes */
-html #carouselPlanes .plan-name{font-size:14px;letter-spacing:.14em}
-html #carouselPlanes .plan-price{font-size:clamp(64px,19vw,76px) !important;margin:10px 0 0 !important;letter-spacing:-2px !important;line-height:1 !important}
-html #carouselPlanes .plan-price small{font-size:clamp(22px,6vw,28px);transform:translateY(-.6em);letter-spacing:0}
-@media (min-width:900px){html #carouselPlanes .plan-price{font-size:clamp(64px,4.6vw,78px) !important}}
+
+/* ===== Planes: acordeón (cerrado = solo el nombre; abierto = tarjeta completa) ===== */
+#carouselPlanes.acc{display:flex;flex-direction:column;gap:12px;padding:6px 16px 14px 0;margin:0;overflow:visible}
+html #carouselPlanes>.pa{flex:none;width:auto;max-width:none;min-width:0;padding:0;overflow:hidden;position:relative;transform:none;opacity:1}
+html #carouselPlanes>.pa:hover,html #carouselPlanes>.pa:focus-within{transform:none}
+.pa-h{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;padding:22px 22px;background:none;border:0;border-radius:0;color:rgb(var(--fg));font-family:inherit;font-weight:700;font-size:clamp(17px,4.6vw,20px);line-height:1.2;text-align:left;cursor:pointer;-webkit-appearance:none;appearance:none;position:relative;z-index:2}
+.pa-h:focus-visible{outline:2px solid rgb(var(--pc));outline-offset:-4px}
+.pa-name{letter-spacing:.01em;transition:color .4s}
+.pa.open .pa-name{color:rgb(var(--pc))}
+.pa-chev{flex:0 0 auto;width:10px;height:10px;border:solid currentColor;border-width:0 2px 2px 0;transform:rotate(45deg) translateY(-2px);transition:transform .45s cubic-bezier(.2,.8,.2,1);opacity:.8}
+.pa.open .pa-chev{transform:rotate(-135deg) translateY(-1px)}
+.pa-b{display:grid;grid-template-rows:0fr;transition:grid-template-rows .65s cubic-bezier(.2,.8,.2,1)}
+.pa.open .pa-b{grid-template-rows:1fr}
+.pa-in{overflow:hidden;min-height:0;padding:0 22px}
+.pa-c{display:grid;grid-template-areas:"top" "list" "btn";gap:0;padding:0 0 24px}
+.pa-top{grid-area:top;border-bottom:1px solid rgba(var(--pc),.5);padding-bottom:16px;margin-bottom:18px}
+.pa-c .plan-list{grid-area:list;margin:0 0 24px !important}
+.pa-c .btn-glow{grid-area:btn;align-self:end}
+.pa-top .plan-name{font-size:13px;letter-spacing:.16em;margin:0}
+html .pa .plan-price{font-size:clamp(64px,19vw,76px) !important;margin:8px 0 0 !important;letter-spacing:-2px !important;line-height:1 !important}
+html .pa .plan-price small{font-size:clamp(22px,6vw,28px);transform:translateY(-.6em);letter-spacing:0}
+/* entrada escalonada al abrir: nombre → precio (con rebote) → cada característica → botón */
+.pa .plan-name{opacity:0;translate:0 10px;transition:opacity .2s,translate .2s}
+.pa .plan-price{opacity:0;scale:.5;transform-origin:left center;transition:opacity .2s,scale .2s}
+.pa .plan-list li{opacity:0;translate:-18px 0;transition:opacity .2s,translate .2s}
+.pa .plan-list li:before{scale:0;transition:scale .2s}
+.pa .btn-glow{opacity:0;translate:0 14px;transition:opacity .2s,translate .2s,transform .2s,box-shadow .2s,background .2s}
+.pa.open .plan-name{opacity:1;translate:0;transition:opacity .5s ease .3s,translate .5s cubic-bezier(.2,.8,.2,1) .3s}
+.pa.open .plan-price{opacity:1;scale:1;transition:opacity .4s ease .45s,scale .75s cubic-bezier(.3,1.5,.5,1) .45s}
+.pa.open .plan-list li{opacity:.92;translate:0;transition:opacity .5s ease calc(.85s + var(--i,0)*.16s),translate .55s cubic-bezier(.2,.8,.2,1) calc(.85s + var(--i,0)*.16s)}
+.pa.open .plan-list li:before{scale:1;transition:scale .45s cubic-bezier(.3,1.6,.5,1) calc(.95s + var(--i,0)*.16s)}
+.pa.open .btn-glow{opacity:1;translate:0;transition:opacity .5s ease calc(.95s + var(--n,3)*.16s),translate .5s cubic-bezier(.2,.8,.2,1) calc(.95s + var(--n,3)*.16s),transform .2s,box-shadow .2s,background .2s}
+@media (min-width:900px){
+ #carouselPlanes.acc{flex-direction:row;gap:14px;padding:6px 0 14px;height:640px;align-items:stretch}
+ html #carouselPlanes>.pa{flex:1 1 0;transition:flex-grow .85s cubic-bezier(.2,.8,.2,1),box-shadow .3s}
+ html #carouselPlanes>.pa.open{flex-grow:5.4}
+ .pa-h{position:absolute;top:0;left:0;right:0;bottom:0;flex-direction:column;align-items:center;justify-content:space-between;padding:28px 0 26px;transition:opacity .3s .15s}
+ .pa-name{writing-mode:vertical-rl;transform:rotate(180deg);font-size:19px;letter-spacing:.06em;white-space:nowrap}
+ .pa.open .pa-h{opacity:0;pointer-events:none;transition:opacity .15s}
+ .pa-chev{transform:rotate(45deg)}
+ .pa-b{position:absolute;top:0;left:0;right:0;bottom:0;display:block;opacity:0;pointer-events:none;transition:opacity .2s}
+ .pa.open .pa-b{opacity:1;pointer-events:auto;transition:opacity .4s .25s}
+ .pa-in{overflow:hidden;height:100%;padding:0;min-width:440px}
+ .pa-c{height:100%;padding:34px 30px 30px;grid-template-rows:auto 1fr auto}
+ .pa-top .plan-name{font-size:14px}
+ .pa-c .plan-list li{font-size:15px}
+}
+@media (min-width:1100px){
+ #carouselPlanes.acc{height:540px}
+ .pa-in{min-width:640px}
+ .pa-c{grid-template-areas:"top list" "btn list";grid-template-columns:minmax(200px,.8fr) 1.2fr;grid-template-rows:1fr auto;column-gap:36px;padding:40px 40px 36px}
+ .pa-top{border-bottom:0;margin-bottom:0;padding-bottom:0;align-self:start}
+ .pa-c .plan-list{margin:6px 0 0 !important;padding-left:36px;border-left:1px solid rgba(var(--pc),.35);gap:16px !important;align-self:start}
+ html .pa .plan-price{font-size:clamp(70px,5.6vw,96px) !important}
+ .pa-c .plan-list li{font-size:16px}
+}
+
+/* ===== Modelos y portafolio: "Ver todos" ===== */
+.vermas:not(.none){display:flex}
+.vermas{margin:22px auto 8px}
+#todos{position:fixed;top:0;right:0;bottom:0;left:0;z-index:125;background:var(--bg);color:rgb(var(--fg));opacity:0;visibility:hidden;transform:translateY(24px);transition:opacity .3s,transform .4s cubic-bezier(.2,.8,.2,1),visibility 0s .4s}
+#todos.open{opacity:1;visibility:visible;transform:none;transition:opacity .3s,transform .4s cubic-bezier(.2,.8,.2,1)}
+html.td-open{overflow:hidden}
+.td-wrap{position:absolute;top:0;right:0;bottom:0;left:0;overflow-y:auto;padding:14px 16px 60px;max-width:1360px;margin:0 auto;-webkit-overflow-scrolling:touch}
+.td-head{display:flex;align-items:center;gap:12px;padding:6px 0 14px;position:sticky;top:0;z-index:3;background:linear-gradient(var(--bg) 75%,transparent)}
+.td-head h2{font-size:clamp(22px,5vw,34px);font-weight:800;flex:1}
+.td-head span{font-size:13px;opacity:.6}
+.td-back{width:42px;height:42px;border-radius:12px;border:1px solid rgba(var(--fg),.18);background:rgba(var(--fg),.05);color:rgb(var(--fg));font-size:26px;line-height:1;cursor:pointer;padding-bottom:3px}
+.td-back:hover{background:linear-gradient(115deg,rgb(var(--acc)),rgb(var(--acc2)));color:var(--onacc);border-color:transparent}
+.td-search{display:flex;align-items:center;gap:12px;padding:13px 16px;margin:0 0 18px;border-radius:14px;border:1px solid rgba(var(--fg),.14);background:rgba(var(--fg),.05)}
+.td-search:focus-within{border-color:rgb(var(--acc))}
+.td-search input{flex:1;min-width:0;background:transparent;border:0;outline:none;color:rgb(var(--fg));font-size:16px}
+.td-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.td-grid .gcard.gcard{flex:none;width:auto;max-width:none}
+.td-grid .nores{grid-column:1/-1}
+@media (min-width:900px){.td-wrap{padding:24px 56px 80px}.td-grid{gap:26px;grid-template-columns:repeat(auto-fill,minmax(290px,1fr))}}
+.gcard video.pic{background:rgba(var(--bgrgb),.55)}
 </style>
 </head>
 <body>
 <div id="pre"><div><img id="preLogo" class="pre-logo" alt=""><div class="pt" id="preName"></div><div class="pl2"><span class="pb"></span><small id="pn">0%</small></div></div></div>
 <div id="prog"></div>
-<video class="bgv" id="videoFondo" autoplay muted loop playsinline preload="metadata"></video><div id="veil"></div>
+<video class="bgv" id="videoFondo" autoplay muted loop playsinline preload="metadata"></video><img class="bgv" id="imgFondo" alt="" hidden><div id="veil"></div>
 <nav><button class="burger" id="burger" aria-label="Menú"><i></i><i></i><i></i></button><span class="logo" id="logo"><img id="navLogo" alt=""><span id="logoTx"></span></span><div class="nav-wrap" id="navWrap"></div></nav>
 <div id="dbg"></div><aside id="drawer"></aside>
 <main id="app"></main>
@@ -593,8 +645,13 @@ html #carouselPlanes .plan-price small{font-size:clamp(22px,6vw,28px);transform:
 const D=(()=>{try{if(/preview/.test(location.search)){const d=localStorage.getItem('joelwebs_draft');if(d)return JSON.parse(d)}}catch(e){}return window.SITE_DATA})();
 const $=id=>document.getElementById(id);
 const E=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const pic=o=>o.img?`<img class="pic" loading="lazy" decoding="async" src="${E(encodeURI(o.img))}" alt="">`:'<div class="pic empty"></div>';
-const fixImgs=()=>document.querySelectorAll('img.pic').forEach(im=>{im.onerror=()=>im.replaceWith(Object.assign(document.createElement('div'),{className:'pic empty'}))});
+const ES_VID=u=>/\.(mp4|webm|mov|m4v|ogv)(\?|$)/i.test(u||'');
+/* Cada modelo / trabajo puede llevar imagen o video (campo "video", o un video en el campo "img") */
+const pic=o=>{const u=o.video||o.img;if(!u)return '<div class="pic empty"></div>';const e=E(encodeURI(u));
+ return ES_VID(u)?`<video class="pic" muted loop playsinline preload="metadata" disablepictureinpicture src="${e}"></video>`:`<img class="pic" loading="lazy" decoding="async" src="${e}" alt="">`};
+const vidObs=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting)v.play().catch(()=>{});else v.pause()}),{threshold:.25});
+const sinMedia=el=>el.replaceWith(Object.assign(document.createElement('div'),{className:'pic empty'}));
+const fixImgs=()=>{document.querySelectorAll('img.pic').forEach(im=>{im.onerror=()=>sinMedia(im)});document.querySelectorAll('video.pic').forEach(v=>{if(v._o)return;v._o=1;v.onerror=()=>sinMedia(v);v.muted=true;vidObs.observe(v)})};
 const fill=(t,n,p)=>String(t).replace('{n}',n).replace('{p}',p);
 const M=D.marca,C=D.contacto,S=D.secciones;
 const ST=Object.assign({ledModo:'fijo',ledColor:'#ffffff',rgbColores:['#ff0055','#00ff88','#0055ff'],ledVelocidad:'4',giroVelocidad:'3',visual:'clasico'},D.estilo||{});
@@ -684,7 +741,7 @@ $('app').innerHTML=`
 <div class="about-tx">${(P.texto||'').split('\n').filter(Boolean).map(t=>`<p>${E(t)}</p>`).join('')}</div>
 <div class="pasos">${(P.pasos||[]).map(t=>`<div class="paso">${E(t)}</div>`).join('')}</div>
 <div class="intro-cierre"><p>${E((P.cierre||'').replace('{desde}',DESDE))}</p><div class="intro-btns"><a class="btn-glow ghost" href="#planes">${E(P.boton2||'Ver planes')}</a></div></div></section></div>
-<div class="section" id="planes"><div class="sec-head"><h2>${SI('planes')}${E(S.planes)}</h2></div><div class="carousel" id="carouselPlanes"></div></div>
+<div class="section" id="planes"><div class="sec-head"><h2>${SI('planes')}${E(S.planes)}</h2></div><div class="acc" id="carouselPlanes"></div></div>
 <div class="section" id="modelos"><div class="sec-head"><h2>${SI('modelos')}${E(S.modelos)}</h2><span id="contador"></span></div><div class="carousel" id="carouselModelos"></div></div>
 <div class="section" id="portafolio"><div class="sec-head"><h2>${SI('portafolio')}${E(S.portafolio)}</h2></div><div class="carousel" id="carouselPorta"></div></div>
 <div class="section" id="skills"><div class="sec-head"><h2>${SI('skills')}${E(S.skills||'Skills')}</h2></div><div class="sk-grid">${(D.skills||[]).map(k=>`<div class="sk"><img src="${E(k.img)}" alt="${E(k.nombre)}" loading="lazy" onerror="this.style.visibility='hidden'"><span>${E(k.nombre)}</span></div>`).join('')}</div></div>
@@ -703,7 +760,7 @@ const hay=o=>norm([o.nombre,o.titulo,o.plan,o.keys,o.precio].join(' '));
 const tokOk=(h,hw,t)=>h.includes(t)||(t.length>=4&&hw.some(w=>w.length>=3&&lev(w,t)<=1));
 const hexRGB=h=>{h=String(h||'').replace('#','');if(h.length===3)h=h.replace(/./g,'$&$&');const n=parseInt(h,16);return h.length===6&&!isNaN(n)?[n>>16&255,n>>8&255,n&255].join(','):''};
 const precioH=t=>{const m=String(t==null?'':t).match(/^(\D*?)\s*(\d.*)$/);return m&&m[1]?`<small>${E(m[1])}</small>${E(m[2])}`:E(t)};
-const cPlan=(p,i)=>{const L=String(p.desc||'').split('\n').filter(t=>t.trim());return `<div class="plan-card${PQ.init?' in':''}" style="--n:${L.length}${hexRGB(p.acento)?';--pc:'+hexRGB(p.acento):''}"><div class="plan-head"><div class="plan-tx"><div class="plan-name">${E(p.nombre)}</div><div class="plan-price">${precioH(p.precio)}</div></div></div><div class="plan-sep"></div><ul class="plan-list">${L.map((t,k)=>`<li style="--i:${k}">${E(t)}</li>`).join('')}</ul><button class="btn-glow" data-plan="${i}">Seleccionar plan${PLANE}</button></div>`};
+const cPlan=(p,i)=>{const L=String(p.desc||'').split('\n').filter(t=>t.trim());return `<article class="plan-card pa" style="--n:${L.length}${hexRGB(p.acento)?';--pc:'+hexRGB(p.acento):''}"><button type="button" class="pa-h" aria-expanded="false"><span class="pa-name">${E(p.nombre)}</span><i class="pa-chev"></i></button><div class="pa-b"><div class="pa-in"><div class="pa-c"><div class="pa-top"><div class="plan-name">${E(p.nombre)}</div><div class="plan-price">${precioH(p.precio)}</div></div><ul class="plan-list">${L.map((t,k)=>`<li style="--i:${k}">${E(t)}</li>`).join('')}</ul><button class="btn-glow" data-plan="${i}">Seleccionar plan${PLANE}</button></div></div></div></article>`};
 const pcs=o=>hexRGB(o.acento)?` style="--pc:${hexRGB(o.acento)}"`:'';
 const cMod=(m,i)=>`<div class="model-card gcard"${pcs(m)}>${pic(m)}<div class="card-info"><b>${E(m.titulo)}</b><span>${E(m.precio)}</span></div><button class="btn-glow" data-mod="${i}">Seleccionar modelo${PLANE}</button></div>`;
 const cPor=p=>`<div class="bg-card gcard"${pcs(p)}>${pic(p)}<div class="label">${E(p.nombre)} <small>${E(p.plan)}</small></div></div>`;
@@ -711,26 +768,48 @@ const revObs=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)re
 function reveal(){document.querySelectorAll('.plan-card,.gcard,.pregunta-card').forEach(el=>{if(el.dataset.vo)return;el.dataset.vo=1;visObs.observe(el)});document.querySelectorAll('.sec-head,.about>*,.sk,.model-card,.bg-card,.pregunta-card,.cta>*').forEach((el,i)=>{if(el.dataset.rv)return;el.dataset.rv=1;el.classList.add('rv');const sib=[...el.parentNode.children].indexOf(el);el.style.setProperty('--d',Math.min(sib,6)*.09+'s');const car=el.closest('.carousel');if(car){if(car.dataset.seen)el.classList.add('in');else revObs.observe(car)}else revObs.observe(el)})}
 const visObs=new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle('vis',e.isIntersecting)),{rootMargin:'80px'});
 const VM={};
-/* Planes: se arman tarjeta por tarjeta (primero el precio, luego cada característica y por último el botón); la siguiente empieza cuando la anterior casi termina */
-const PQ={init:false,q:[],run:false};
-const planObs=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;planObs.unobserve(e.target);PQ.q.push(e.target);planNext()}),{threshold:.25,rootMargin:'0px 0px -6% 0px'});
-function planNext(){if(PQ.run)return;PQ.q=PQ.q.filter(c=>c.isConnected&&!c.classList.contains('in'));if(!PQ.q.length)return;
- const all=[...$('carouselPlanes').children];PQ.q.sort((a,b)=>all.indexOf(a)-all.indexOf(b));
- const c=PQ.q.shift(),n=+c.style.getPropertyValue('--n')||3;PQ.run=true;c.classList.add('in');
- setTimeout(()=>{PQ.run=false;planNext()},(.7+n*.16+.25)*1000)}
-function planAnim(){const g=$('carouselPlanes');if(!g)return;
- if(PQ.init||matchMedia('(prefers-reduced-motion:reduce)').matches){g.querySelectorAll('.plan-card:not(.in)').forEach(c=>c.classList.add('in'));return}
- PQ.init=true;g.querySelectorAll('.plan-card:not(.in)').forEach(c=>planObs.observe(c))}
-['carouselModelos','carouselPorta'].forEach(id=>{const c=$(id);if(!c)return;c.classList.add('collapsed');const b=document.createElement('button');b.type='button';b.className='vermas none';c.insertAdjacentElement('afterend',b);VM[id]=b;
-  b.onclick=()=>{const cerrando=!c.classList.toggle('collapsed');vmUpd(id,+b.dataset.t);if(!cerrando)c.closest('.section').scrollIntoView({behavior:'smooth'})}});
-function vmUpd(id,n){const b=VM[id];if(!b)return;const c=$(id),extra=Math.max(0,n-3);b.dataset.n=extra;b.dataset.t=n;b.classList.toggle('none',extra===0);const abierto=!c.classList.contains('collapsed');b.classList.toggle('open',abierto);b.innerHTML=(abierto?'Ver menos ':'Ver más ('+extra+') ')+'<i></i>'}
+/* Planes: acordeón. Cerrado solo muestra el nombre; al abrir se despliega y entran precio, características y botón */
+const ACC={init:false,k:null,vis:false,hover:false,pause:0};
+const accEl=()=>$('carouselPlanes'),accDesk=()=>matchMedia('(min-width:900px)').matches;
+function accOpen(i,user){const g=accEl();[...g.children].forEach((c,k)=>{if(!c.classList.contains('pa'))return;const on=k===i;c.classList.toggle('open',on);const h=c.querySelector('.pa-h');if(h)h.setAttribute('aria-expanded',on)});
+ if(user){ACC.pause=Date.now()+12000;if(!accDesk()){const c=g.children[i];setTimeout(()=>c&&c.scrollIntoView({behavior:'smooth',block:'nearest'}),420)}}}
+function accAuto(){setInterval(()=>{const g=accEl();if(!g||!accDesk()||!ACC.vis||ACC.hover||document.hidden||Date.now()<ACC.pause||document.body.classList.contains('menu-open'))return;
+ const n=g.querySelectorAll('.pa').length;if(n<2)return;const cur=[...g.children].findIndex(c=>c.classList.contains('open'));accOpen((cur+1)%n)},5200)}
+function planAnim(){const g=accEl();if(!g)return;const k=g.dataset.k;
+ if(!ACC.init){ACC.init=true;ACC.k=k;
+  g.addEventListener('mouseenter',()=>ACC.hover=true);g.addEventListener('mouseleave',()=>ACC.hover=false);
+  const io=new IntersectionObserver(es=>{const r=es[0].isIntersecting;if(r&&!ACC.vis&&!g.querySelector('.open'))accOpen(0);ACC.vis=r},{threshold:.3});io.observe(g);accAuto();return}
+ if(k!==ACC.k){ACC.k=k;if(g.querySelector('.pa'))accOpen(0)}}
+const LIM=10,TXT={carouselModelos:'modelos',carouselPorta:'portafolio'};
+['carouselModelos','carouselPorta'].forEach(id=>{const c=$(id);if(!c)return;const b=document.createElement('button');b.type='button';b.className='vermas none';c.insertAdjacentElement('afterend',b);VM[id]=b;b.onclick=()=>abrirTodos(id)});
+function vmUpd(id,n){const b=VM[id];if(!b)return;b.dataset.t=n;b.classList.toggle('none',n<=LIM);b.innerHTML='Ver todos ('+n+') <i></i>'}
+/* Apartado con TODOS los modelos o TODO el portafolio (por separado) */
+function mk(q,exacto){const nq=norm(q).trim(),todo=!nq||nq==='todos',toks=nq.split(/\s+/);
+  return o=>{if(todo)return true;if(exacto)return words([o.nombre,o.titulo,o.plan,o.keys].join(' ')).includes(nq);const h=hay(o),hw=words(h);return toks.every(t=>tokOk(h,hw,t))}}
+const QS={q:'',ex:false};
+const TD=document.createElement('div');TD.id='todos';TD.setAttribute('role','dialog');TD.setAttribute('aria-modal','true');
+TD.innerHTML='<div class="td-wrap"><div class="td-head"><button type="button" class="td-back" aria-label="Volver">‹</button><h2 id="tdTit"></h2><span id="tdCnt"></span></div><div class="td-search"><svg class="s-ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.500"/><path d="M16 16l4.500 4.500"/></svg><input id="tdQ" placeholder="Buscar..." autocomplete="off"></div><div class="td-grid" id="tdGrid"></div></div>';
+document.body.appendChild(TD);
+let tdK=null,tdPush=false;
+function tdPintar(){const arr=tdK==='carouselModelos'?D.modelos:D.portafolio,fn=tdK==='carouselModelos'?cMod:cPor,ok=mk($('tdQ').value,false),ix=[];
+  arr.forEach((o,i)=>{if(ok(o))ix.push(i)});
+  $('tdGrid').innerHTML=ix.map(i=>fn(arr[i],i)).join('')||'<p class="nores">No hay resultados.</p>';$('tdCnt').textContent=ix.length+(ix.length===1?' resultado':' resultados');fixImgs()}
+function abrirTodos(id){tdK=id;$('tdTit').textContent=id==='carouselModelos'?(S.modelos||'Modelos'):(S.portafolio||'Portafolio');$('tdQ').value=QS.q&&QS.q!=='todos'?QS.q:'';tdPintar();
+  TD.classList.add('open');document.documentElement.classList.add('td-open');TD.querySelector('.td-wrap').scrollTop=0;
+  try{history.pushState({todos:id},'');tdPush=true}catch(e){tdPush=false}}
+function cerrarTodos(pop){if(!TD.classList.contains('open'))return;TD.classList.remove('open');document.documentElement.classList.remove('td-open');$('tdGrid').innerHTML='';
+  if(!pop&&tdPush){tdPush=false;try{history.back()}catch(e){}}else tdPush=false}
+TD.querySelector('.td-back').onclick=()=>cerrarTodos();
+addEventListener('popstate',()=>cerrarTodos(true));
+addEventListener('keydown',e=>{if(e.key==='Escape')cerrarTodos()});
+$('tdQ').addEventListener('input',tdPintar);
 function pintar(q,exacto){
   const nq=norm(q).trim(),todo=!nq||nq==='todos',toks=nq.split(/\s+/);
-  const ok=o=>{if(todo)return true;if(exacto)return words([o.nombre,o.titulo,o.plan,o.keys].join(' ')).includes(nq);const h=hay(o),hw=words(h);return toks.every(t=>tokOk(h,hw,t))};
-  const fill=(id,arr,fn,msg)=>{const ix=[];arr.forEach((o,i)=>{if(ok(o))ix.push(i)});const el=$(id),k=ix.join(',')||'-';if(el.dataset.k!==k){el.dataset.k=k;el.innerHTML=ix.map(i=>fn(arr[i],i)).join('')||`<p class="nores">${msg}</p>`}return ix.length};
+  const ok=mk(q,exacto);QS.q=nq;QS.ex=!!exacto;
+  const fill=(id,arr,fn,msg,lim)=>{const ix=[];arr.forEach((o,i)=>{if(ok(o))ix.push(i)});const el=$(id),k=ix.join(',')||'-';if(el.dataset.k!==k){el.dataset.k=k;el.innerHTML=ix.slice(0,lim||1e9).map(i=>fn(arr[i],i)).join('')||`<p class="nores">${msg}</p>`}return ix.length};
   const a=fill('carouselPlanes',D.planes,cPlan,'No hay planes con esa palabra clave.');
-  const b=fill('carouselModelos',D.modelos,cMod,'No hay modelos con esa palabra clave.');
-  const c=fill('carouselPorta',D.portafolio,cPor,'No hay trabajos con esa palabra clave.');
+  const b=fill('carouselModelos',D.modelos,cMod,'No hay modelos con esa palabra clave.',LIM);
+  const c=fill('carouselPorta',D.portafolio,cPor,'No hay trabajos con esa palabra clave.',LIM);
   contador.textContent=b+' modelos';vmUpd('carouselModelos',b);vmUpd('carouselPorta',c);fixImgs();reveal();planAnim();return{planes:a,modelos:b,portafolio:c};
 }
 /* Cada plan, modelo y trabajo del portafolio aporta palabras clave automáticamente */
@@ -742,7 +821,7 @@ function pool(){
   D.portafolio.forEach(x=>add(x.nombre+' '+x.plan+' '+(x.keys||'')));
   return [...m.values()];
 }
-const ENT=()=>[...D.planes.map(p=>({t:p.nombre,k:'Plan',sec:'planes',pr:p.precio,img:p.icono||p.img,x:p.keys})),...D.modelos.map(m=>({t:m.titulo,k:'Modelo',sec:'modelos',pr:m.precio,img:m.img,x:m.keys})),...D.portafolio.map(p=>({t:p.nombre,k:'Portafolio',sec:'portafolio',pr:p.plan,img:p.img,x:p.keys}))].filter(e=>e.t&&String(e.t).trim());
+const ENT=()=>[...D.planes.map(p=>({t:p.nombre,k:'Plan',sec:'planes',pr:p.precio,img:p.icono||p.img,x:p.keys})),...D.modelos.map(m=>({t:m.titulo,k:'Modelo',sec:'modelos',pr:m.precio,img:ES_VID(m.img)?'':m.img,x:m.keys})),...D.portafolio.map(p=>({t:p.nombre,k:'Portafolio',sec:'portafolio',pr:p.plan,img:ES_VID(p.img)?'':p.img,x:p.keys}))].filter(e=>e.t&&String(e.t).trim());
 function predecir(q){
   const nq=norm(q).trim();if(!nq)return{list:[],cards:[]};
   const toks=nq.split(/\s+/),first=toks[0];
@@ -787,27 +866,6 @@ generarTags();pintar('');
 let tmr;buscador.addEventListener('input',()=>{const q=buscador.value.trim();searchBox.classList.toggle('has-text',!!q);sugerir();clearTimeout(tmr);tmr=setTimeout(()=>pintar(q,false),140)});
 buscador.addEventListener('focus',sugerir);
 
-/* Carruseles: flechas en PC y, en celulares, un plan por segundo (al llegar al final regresa al inicio). Animación propia con rAF: fluida y sin pelear con scroll-snap */
-(function(){
-  const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches,touch=matchMedia('(pointer:coarse)').matches;
-  const gapOf=el=>parseFloat(getComputedStyle(el).columnGap)||14;
-  const cardW=el=>{const k=el.children[0];return k?k.offsetWidth+gapOf(el):0};
-  const ease=t=>.5-Math.cos(Math.PI*t)/2;
-  function slide(el,to,ms){
-    cancelAnimationFrame(el._raf);
-    const from=el.scrollLeft,dist=to-from;
-    if(Math.abs(dist)<1||reduce){el.scrollLeft=to;return}
-    el.classList.add('moving');
-    const t0=performance.now();
-    const step=t=>{const k=Math.min(1,Math.max(0,(t-t0)/ms));el.scrollLeft=from+dist*ease(k);if(k<1)el._raf=requestAnimationFrame(step);else el.classList.remove('moving')};
-    el._raf=requestAnimationFrame(step);
-  }
-  const cp=$('carouselPlanes'),head=cp&&cp.parentNode.querySelector('.sec-head');
-  if(cp&&head){const ar=document.createElement('div');ar.className='car-arrows';ar.innerHTML='<button type="button" aria-label="Anterior">‹</button><button type="button" aria-label="Siguiente">›</button>';head.appendChild(ar);
-    const [a,b]=ar.children,mover=d=>{const w=cardW(cp);if(!w)return;const max=cp.scrollWidth-cp.clientWidth,i=Math.round(cp.scrollLeft/w);slide(cp,Math.max(0,Math.min(max,(i+d)*w)),520)};
-    a.onclick=()=>mover(-1);b.onclick=()=>mover(1);
-    const chk=()=>ar.classList.toggle('off',cp.scrollWidth<=cp.clientWidth+4);chk();addEventListener('resize',chk);addEventListener('load',chk);new MutationObserver(chk).observe(cp,{childList:true})}
-  })();
 buscador.addEventListener('keydown',e=>{
   const n=sugL.length;
   if(e.key==='ArrowDown'||e.key==='ArrowUp'){if(!n)return;e.preventDefault();sugI=(sugI+(e.key==='ArrowDown'?1:-1)+n+1)%(n+1);if(sugI===n)sugI=-1;[...sug.children].forEach((c,i)=>c.classList.toggle('on',i===sugI));if(sugI>=0)sug.children[sugI].scrollIntoView({block:'nearest'});return}
@@ -819,8 +877,9 @@ document.addEventListener('click',e=>{if(!e.target.closest('.sw'))cerrarSug()});
 clearBtn.addEventListener('click',()=>{buscador.value='';searchBox.classList.remove('has-text');pintar('');generarTags();buscador.focus();sugerir()});
 
 /* Selección → WhatsApp */
-function elegir(titulo,msg,n,p){const u=wa(fill(msg,n,p));$('tituloCotizar').textContent=fill(titulo,n,p);$('btnCotizar').href=u;$('cotizar').scrollIntoView({behavior:'smooth'});setTimeout(()=>window.open(u,'_blank'),600)}
+function elegir(titulo,msg,n,p){cerrarTodos();const u=wa(fill(msg,n,p));$('tituloCotizar').textContent=fill(titulo,n,p);$('btnCotizar').href=u;$('cotizar').scrollIntoView({behavior:'smooth'});setTimeout(()=>window.open(u,'_blank'),600)}
 document.addEventListener('click',e=>{
+  const h=e.target.closest('.pa-h');if(h){const g=accEl(),c=h.parentNode,i=[...g.children].indexOf(c);if(c.classList.contains('open')){if(!accDesk()){c.classList.remove('open');h.setAttribute('aria-expanded',false)}}else accOpen(i,true);return}
   const b=e.target.closest('button[data-plan],button[data-mod]');
   if(b){if(b.dataset.plan!=null){const p=D.planes[b.dataset.plan];elegir(C.tituloPlan,C.msgPlan,p.nombre,p.precio)}else{const m=D.modelos[b.dataset.mod];elegir(C.tituloModelo,C.msgModelo,m.titulo,m.precio)}return}
   const q=e.target.closest('.pregunta-card');if(q)q.classList.toggle('open');
@@ -848,7 +907,7 @@ function onScroll(){
 }
 addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(()=>{tick=false;onScroll()})}},{passive:true});
 addEventListener('resize',()=>{medir();onScroll()});addEventListener('load',()=>{medir();onScroll()});if(window.ResizeObserver)new ResizeObserver(()=>{medir();onScroll()}).observe($('app'));
-medir();onScroll();window.onTema=()=>{vo=-1;onScroll()};
+medir();onScroll();window.onTema=()=>{vo=-1;onScroll();if(window.setFondo)setFondo()};
 
 /* Precarga */
 const pre=$('pre'),pn=$('pn');
@@ -864,15 +923,26 @@ const t0=performance.now();(function f(t){const k=Math.min(1,Math.max(0,(t-t0)/5
 /* Video de fondo (continúa en el mismo segundo al volver) */
 const v=$('videoFondo');v.muted=true;v.loop=true;v.playsInline=true;v.disablePictureInPicture=true;v.setAttribute('disableremoteplayback','');
 const H=document.documentElement,sinVideo=()=>H.classList.add('sv');
-if(H.classList.contains('nov')||!M.video){v.removeAttribute('autoplay');v.preload='none';sinVideo()}else v.src=M.video;
-v.addEventListener('error',sinVideo);v.addEventListener('loadeddata',()=>{if(!H.classList.contains('nov')&&M.video)H.classList.remove('sv')});
+/* Fondo: un video o imagen para modo oscuro (marca.video) y otro para modo claro (marca.videoClaro). Si falta uno se usa el otro */
+const imgF=$('imgFondo'),ES_IMG=u=>/\.(jpe?g|png|webp|gif|avif|svg)(\?|$)/i.test(u||'');
+let fondoAct=null;
+function fondoSrc(){const o=esOscuro();return o?(M.video||M.videoClaro||''):(M.videoClaro||M.video||'')}
+function setFondo(){
+ H.classList.toggle('fl',!esOscuro()&&!!M.videoClaro);
+ const src=fondoSrc();if(src===fondoAct)return;fondoAct=src;
+ if(H.classList.contains('nov')||!src){v.removeAttribute('autoplay');v.preload='none';v.pause();sinVideo();return}
+ if(ES_IMG(src)){H.classList.add('bgimg');v.pause();v.removeAttribute('src');v.load();imgF.hidden=false;imgF.onload=()=>H.classList.remove('sv');imgF.onerror=sinVideo;imgF.src=src;return}
+ H.classList.remove('bgimg');imgF.hidden=true;imgF.removeAttribute('src');v.src=src;v.load();if(!window.vidHold&&!parado)v.play().catch(()=>{});
+}
+v.addEventListener('error',()=>{if(!H.classList.contains('bgimg'))sinVideo()});v.addEventListener('loadeddata',()=>{if(!H.classList.contains('nov')&&fondoAct&&!H.classList.contains('bgimg'))H.classList.remove('sv')});
+setFondo();
 const guardar=()=>{try{if(v.currentTime>0.5)sessionStorage.setItem('joel_video_segundo',v.currentTime)}catch(e){}};
 function iniciar(){if(window.vidHold)return;const g=parseFloat(sessionStorage.getItem('joel_video_segundo')||0);try{if(g>0.5&&v.duration&&g<v.duration-0.5)v.currentTime=g}catch(e){}if(parado)return;const p=v.play();if(p)p.catch(()=>{})}
 v.addEventListener('loadedmetadata',iniciar);
 v.addEventListener('timeupdate',()=>{if(!parado&&!window.vidHold&&v.duration&&v.currentTime>v.duration-0.25){v.currentTime=0;v.play().catch(()=>{})}});
 v.addEventListener('ended',()=>{if(parado||window.vidHold)return;v.currentTime=0;v.play().catch(()=>{})});
-v.addEventListener('pause',()=>{if(!document.hidden&&!parado&&!window.vidHold)v.play().catch(()=>{})});
-document.addEventListener('visibilitychange',()=>{if(!document.hidden&&!parado&&!window.vidHold)v.play().catch(()=>{})});
+v.addEventListener('pause',()=>{if(!document.hidden&&!parado&&!window.vidHold&&!H.classList.contains('bgimg'))v.play().catch(()=>{})});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&!parado&&!window.vidHold&&!H.classList.contains('bgimg'))v.play().catch(()=>{})});
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)iniciar()});
 ['pageshow','focus'].forEach(e=>addEventListener(e,iniciar));['pagehide','blur'].forEach(e=>addEventListener(e,guardar));
 </script>
