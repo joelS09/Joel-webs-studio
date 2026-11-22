@@ -3,16 +3,13 @@ window.SITE_DATA={
     "nombre": "Joel Webs Studio",
     "logo": "imagenes/612999.jpg",
     "video": "imagenes/627054.mp4",
+    "videoClaro": "",
     "lema": "Diseño web · Piura, Perú"
   },
   "menu": [
     {
       "id": "inicio",
       "texto": "INICIO"
-    },
-    {
-      "id": "skills",
-      "texto": "SKILLS"
     },
     {
       "id": "planes",
@@ -25,6 +22,10 @@ window.SITE_DATA={
     {
       "id": "portafolio",
       "texto": "PORTAFOLIO"
+    },
+    {
+      "id": "skills",
+      "texto": "SKILLS"
     },
     {
       "id": "preguntas",
