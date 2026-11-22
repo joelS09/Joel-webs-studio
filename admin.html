@@ -4,7 +4,7 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex,nofollow">
 <title>Admin · Joel Webs</title>
-<link rel="icon" type="image/png" href="imagenes/favicon-48.png" sizes="48x48"><link rel="icon" type="image/png" href="imagenes/favicon-192.png" sizes="192x192">
+<link rel="icon" href="imagenes/612999.jpg" sizes="192x192"><link rel="apple-touch-icon" href="imagenes/612999.jpg">
 <meta name="theme-color" content="#070b07">
 <meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Admin Webs">
 <style>
@@ -36,12 +36,19 @@ input[type=color]{height:40px;padding:3px}
 </head>
 <body>
 <div id="login"><div><h2>Admin · Joel Webs</h2><input id="pw" type="password" placeholder="Clave" autocomplete="current-password"><button id="go">Entrar</button></div></div>
-<header><img src="imagenes/favicon-192.png" alt="" style="width:26px;height:26px;border-radius:7px;object-fit:cover" onerror="this.style.display='none'"><b>Admin</b><button class="g" id="bPrev">Vista previa</button><button class="g" id="bDown">Descargar</button><button class="g" id="bSave">Guardar en carpeta</button><button id="bGh">Publicar en GitHub</button></header>
+<header><img src="imagenes/612999.jpg" alt="" style="width:26px;height:26px;border-radius:7px;object-fit:cover" onerror="this.style.display='none'"><b>Admin</b><button class="g" id="bPrev">Vista previa</button><button class="g" id="bDown">Descargar</button><button class="g" id="bSave">Guardar en carpeta</button><button id="bGh">Publicar en GitHub</button></header>
 <main><p class="note">Edita el contenido y pulsa <b>Publicar en GitHub</b>: sube las imágenes nuevas a <b>imagenes/</b> y actualiza <b>content/data.js</b> directamente en tu repositorio (Cloudflare Pages lo publica solo). Primero completa <b>Conexión con GitHub</b>. Alternativas sin GitHub: <b>Guardar en carpeta</b> (Chrome/Edge) o <b>Descargar</b>.</p><div id="m"></div></main>
 <div id="msg"></div>
 <script src="content/data.js"></script>
 <script>
-if('serviceWorker' in navigator){navigator.serviceWorker.getRegistrations().then(r=>r.forEach(x=>x.unregister())).catch(()=>{});if(window.caches)caches.keys().then(k=>k.forEach(x=>caches.delete(x))).catch(()=>{})}
+/* Instalable desde Chrome sin archivos extra y sin botón: el manifiesto se crea aquí mismo con el logo */
+(()=>{try{
+ if('serviceWorker' in navigator){navigator.serviceWorker.getRegistrations().then(r=>r.forEach(x=>x.unregister())).catch(()=>{});if(window.caches)caches.keys().then(k=>k.filter(x=>/^joelwebs-/.test(x)).forEach(x=>caches.delete(x))).catch(()=>{})}
+ const here=location.origin+location.pathname,base=new URL('./',location.href).href;
+ const put=ic=>{const m={name:'Admin · Joel Webs',short_name:'Admin Webs',description:'Panel para editar el sitio de Joel Webs.',start_url:here,scope:base,id:here,display:'standalone',orientation:'portrait',background_color:'#000000',theme_color:'#000000',lang:'es',icons:ic};
+  const l=document.createElement('link');l.rel='manifest';l.href=URL.createObjectURL(new Blob([JSON.stringify(m)],{type:'application/manifest+json'}));document.head.appendChild(l)};
+ const im=new Image();im.onload=()=>{try{put([192,512].map(n=>{const c=document.createElement('canvas');c.width=c.height=n;c.getContext('2d').drawImage(im,0,0,n,n);return{src:c.toDataURL('image/png'),sizes:n+'x'+n,type:'image/png',purpose:'any'}}))}catch(e){put([{src:im.src,sizes:'512x512',type:'image/jpeg'}])}};
+ im.onerror=()=>put([]);im.src='imagenes/612999.jpg'}catch(e){}})();
 </script>
 <script>
 const PASS='joelwebs2026'; // cámbiala aquí. Para seguridad real, protege /admin con Cloudflare Access.
@@ -50,18 +57,17 @@ const clone=o=>JSON.parse(JSON.stringify(o));
 let D=clone(window.SITE_DATA),files={},dir=null,abierto='marca';
 const G="linear-gradient(135deg,#222,#000)";
 const S=[
-{t:'Nombre, logo y video',p:'marca',k:'obj',f:[['nombre','Nombre'],['logo','Logo','file'],['video','Video de fondo (nítido en el inicio, borroso desde Sobre mí)','file'],['videoMovil','Video de fondo para celular (opcional)','file']]},
-{t:'Color de toda la página (elige una combinación o Personalizado)',p:'estilo',k:'obj',f:[['tema','Combinación de colores','select',[['original','Verde neón (por defecto)'],['verde-amarillo','Verde y amarillo'],['verde-blanco','Verde y blanco'],['azul-verde','Azul eléctrico y verde'],['personalizado','Personalizado (usa los 3 colores de abajo)']]],['temaAcento','Color principal (solo Personalizado)','color'],['temaAcento2','Color secundario (solo Personalizado)','color'],['temaFondo','Color de fondo (solo Personalizado)','color']]},
+{t:'Nombre, logo y video',p:'marca',k:'obj',f:[['nombre','Nombre'],['lema','Frase corta (menú lateral)'],['logo','Logo','file'],['video','Video de fondo (animación del inicio)','file']]},
+{t:'Colores de toda la página',p:'estilo',k:'obj',f:[['tema','Combinación lista','select',[['original','Verde neón (por defecto)'],['verde-amarillo','Verde y amarillo'],['verde-blanco','Verde y blanco'],['azul-verde','Azul eléctrico y verde'],['morado-rosa','Morado y rosa'],['azul-cian','Azul y cian'],['rojo-naranja','Rojo y naranja'],['personalizado','Personalizado (tus 3 colores de abajo)']]],['temaAcento','Color principal: botones, bordes, brillos, menú, buscador (al cambiarlo pasa a Personalizado)','color'],['temaAcento2','Color secundario (al cambiarlo pasa a Personalizado)','color'],['temaFondo','Color de fondo de la página (al cambiarlo pasa a Personalizado)','color']]},
 {t:'Inicio (textos)',p:'hero',k:'obj',f:[['titulo','Título'],['texto','Texto','area'],['placeholder','Texto del buscador']]},
-{t:'Sobre mí (Inicio)',p:'presentacion',k:'obj',f:[['etiqueta','Etiqueta pequeña'],['titulo','Título'],['texto','Texto (cada salto de línea es un párrafo)','area'],['cierre','Frase final ({desde} = precio del plan más barato)','area'],['boton2','Texto del segundo botón']]},
-{t:'Presentación: pasos (se numeran solos)',p:'presentacion.pasos',k:'strs'},
+{t:'Sobre mí (dentro de Inicio)',p:'presentacion',k:'obj',f:[['seccion','Título de la sección (ej. Sobre mí / About)'],['etiqueta','Etiqueta pequeña'],['titulo','Título'],['texto','Texto (cada salto de línea es un párrafo)','area'],['cierre','Frase final ({desde} = precio del plan más barato; se actualiza solo al editar los planes)','area'],['boton2','Texto del botón']]},
+{t:'Sobre mí: pasos (se numeran solos)',p:'presentacion.pasos',k:'strs'},
 {t:'Skills (logo y nombre)',p:'skills',k:'arr',f:[['nombre','Nombre'],['img','Logo','file']],n:{nombre:'',img:''}},
 {t:'Títulos de secciones',p:'secciones',k:'obj',f:[['planes','Planes'],['modelos','Modelos'],['portafolio','Portafolio'],['preguntas','Preguntas'],['skills','Skills']]},
 {t:'Planes',p:'planes',k:'arr',f:[['nombre','Nombre'],['precio','Precio'],['desc','Descripción','area'],['keys','Palabras clave extra (opcional, el nombre ya cuenta)'],['icono','Ícono del plan (se ve arriba de la tarjeta)','file'],['acento','Color de la tarjeta (borde, luz LED y checks)','color'],['img','Imagen','file']],n:{nombre:'',precio:'',desc:'',keys:'',icono:'',acento:'#c9d1dc',img:'',grad:G}},
 {t:'Modelos (el nombre y las palabras clave generan las predicciones y tarjetas del buscador)',p:'modelos',k:'arr',f:[['titulo','Título'],['precio','Precio'],['keys','Palabras clave separadas por espacio'],['acento','Color de la tarjeta (luz LED al seleccionar)','color'],['img','Imagen','file']],n:{titulo:'',precio:'',keys:'',acento:'#7cc8ff',img:'',grad:G}},
 {t:'Portafolio',p:'portafolio',k:'arr',f:[['nombre','Nombre'],['plan','Plan'],['keys','Palabras clave extra (opcional, el nombre ya cuenta)'],['acento','Color de la tarjeta (luz LED al seleccionar)','color'],['img','Imagen','file']],n:{nombre:'',plan:'',keys:'',acento:'#b48cff',img:'',grad:G}},
-{t:'Contorno LED de las tarjetas',p:'estilo',k:'obj',f:[['ledModo','Modo','select',['fijo','rgb']],['ledColor','Color del modo fijo','color'],['ledVelocidad','Velocidad del RGB en segundos (menor = más rápido)']]},
-{t:'Colores del modo RGB (agrega los que quieras)',p:'estilo.rgbColores',k:'strs',c:1},
+{t:'Estilo y contorno giratorio',p:'estilo',k:'obj',f:[['visual','Estilo visual','select',[['clasico','Clásico'],['neon-cristal','Neón cristal (tarjetas y menú de cristal con contorno luminoso)']]],['giroVelocidad','Segundos por vuelta del contorno LED (3 = normal, 1.5 = rápido, 5 = lento; 0 = sin giro)']]},
 {t:'Preguntas frecuentes',p:'preguntas',k:'arr',f:[['q','Pregunta'],['a','Respuesta','area']],n:{q:'',a:''}},
 {t:'WhatsApp y mensajes',p:'contacto',k:'obj',f:[['whatsapp','WhatsApp (con código de país, sin +)'],['titulo','Título','area'],['boton','Texto del botón'],['msgGeneral','Mensaje general'],['tituloPlan','Título al elegir plan ({n} nombre, {p} precio)','area'],['msgPlan','Mensaje al elegir plan'],['tituloModelo','Título al elegir modelo','area'],['msgModelo','Mensaje al elegir modelo']]},
 {t:'Pie de página',p:'footer',k:'strs'}
@@ -75,7 +81,7 @@ function inp(o,key,label,kind,opts){
   if(kind==='select')(opts||[]).forEach(x=>i.append(Array.isArray(x)?new Option(x[1],x[0]):new Option(x,x)));
   if(kind==='color')i.type='color';
   i.value=o[key]==null?(kind==='color'?'#ffffff':''):o[key];
-  i.oninput=()=>{o[key]=i.value;dirty()};
+  i.oninput=()=>{o[key]=i.value;if(o===D.estilo&&/^tema[AF]/.test(key)){o.tema='personalizado';const s=w.parentNode&&w.parentNode.querySelector('select');if(s)s.value='personalizado'}dirty()};
   if(kind!=='file'){w.append(i);return w}
   const r=el('div','row'),th=el('img','th'),b=el('button','g','Subir'),f=el('input');
   f.type='file';f.accept='image/*,video/*';f.hidden=true;th.alt='';
@@ -122,14 +128,13 @@ async function guardar(){
   try{
     if(!dir)dir=await showDirectoryPicker({mode:'readwrite'});
     await escribir(await dir.getDirectoryHandle('content',{create:true}),'data.js',dataText());
-    const im=await dir.getDirectoryHandle('imagenes',{create:true});
-    for(const p of Object.keys(files)){await escribir(im,p.split('/')[1],files[p]);delete files[p]}
+    for(const p of Object.keys(files)){const ps=p.split('/');let h=dir;for(const s of ps.slice(0,-1))h=await h.getDirectoryHandle(s,{create:true});await escribir(h,ps[ps.length-1],files[p]);delete files[p]}
     try{localStorage.removeItem('joelwebs_draft')}catch(e){}
     toast('Guardado en la carpeta ✓');
   }catch(e){dir=null;if(e.name!=='AbortError')toast('No se guardó: '+e.message)}
 }
 function dl(b,n){const a=el('a');a.href=URL.createObjectURL(b);a.download=n;a.click()}
-function descargar(){dl(new Blob([dataText()],{type:'text/javascript'}),'data.js');Object.keys(files).forEach(p=>dl(files[p],p.split('/')[1]));toast('Copia data.js a content/ y las imágenes a imagenes/')}
+function descargar(){dl(new Blob([dataText()],{type:'text/javascript'}),'data.js');Object.keys(files).forEach(p=>dl(files[p],p.split('/').pop()));toast('Copia data.js a content/, y las imágenes a imagenes/')}
 const b64=f=>new Promise((ok,no)=>{const r=new FileReader();r.onload=()=>ok(r.result.split(',')[1]);r.onerror=()=>no(new Error('No se pudo leer '+f.name));r.readAsDataURL(f)});
 async function ghPut(c,path,content,msg){
   const base=c.base?c.base.replace(/^\/+|\/+$/g,'')+'/':'',url='https://api.github.com/repos/'+c.repo+'/contents/'+base+path;
@@ -156,10 +161,12 @@ async function publicar(){
 $('bGh').onclick=publicar;
 $('bSave').onclick=guardar;$('bDown').onclick=descargar;
 $('bPrev').onclick=()=>{dirty();window.open('index.html?preview=1','_blank')};
-const ESTILO={tema:'original',temaAcento:'#5cff5c',temaAcento2:'#5cff5c',temaFondo:'#070b07',ledModo:'fijo',ledColor:'#ffffff',rgbColores:['#ff0055','#00ff88','#0055ff'],ledVelocidad:'4'};
+const ESTILO={tema:'original',temaAcento:'#5cff5c',temaAcento2:'#5cff5c',temaFondo:'#050605',giroVelocidad:'3',visual:'clasico'};
 function iniciar(){
   try{const d=localStorage.getItem('joelwebs_draft');if(d&&d!==JSON.stringify(D)&&confirm('Hay cambios sin guardar de la última vez. ¿Recuperarlos?'))D=JSON.parse(d)}catch(e){}
   D.estilo=Object.assign({},ESTILO,D.estilo||{});
+  D.presentacion=Object.assign({seccion:'Sobre mí'},D.presentacion||{});delete D.presentacion.puntos;
+  D.marca.lema=D.marca.lema||'Diseño web · Piura, Perú';
   render();
 }
 function entrar(){if($('pw').value===PASS){sessionStorage.setItem('adm','1');$('login').remove();iniciar()}else toast('Clave incorrecta')}
