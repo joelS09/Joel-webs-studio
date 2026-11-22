@@ -2,7 +2,7 @@ window.SITE_DATA={
   "marca": {
     "nombre": "Joel Webs Studio",
     "logo": "imagenes/612999.jpg",
-    "video": "imagenes/612933.mp4",
+    "video": "imagenes/627054.mp4",
     "lema": "Diseño web · Piura, Perú"
   },
   "menu": [
@@ -194,12 +194,12 @@ window.SITE_DATA={
     "temaAcento": "#5cff5c",
     "temaAcento2": "#5cff5c",
     "temaFondo": "#050605",
+    "giroVelocidad": "3",
+    "visual": "clasico",
     "generalModo": "fijo",
     "generalColor": "#00ffff",
     "botonModo": "fijo",
-    "botonColor": "#00ffff",
-    "giroVelocidad": "3",
-    "visual": "clasico"
+    "botonColor": "#00ffff"
   },
   "presentacion": {
     "seccion": "Sobre mí",
