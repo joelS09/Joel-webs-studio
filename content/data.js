@@ -87,12 +87,48 @@ window.SITE_DATA={
   ],
   "modelos": [
     {
-      "titulo": "Cafetería ",
+      "titulo": "Cafetería",
       "precio": "200",
-      "keys": "Cafetería ",
-      "acento": "#755601",
+      "keys": "",
+      "acento": "#915700",
       "img": "",
-      "video": "videos/628484.mp4",
+      "video": "videos/628836.mp4",
+      "grad": "linear-gradient(135deg,#222,#000)"
+    },
+    {
+      "titulo": "Restaurant",
+      "precio": "160",
+      "keys": "",
+      "acento": "#a14127",
+      "img": "",
+      "video": "videos/628837.mp4",
+      "grad": "linear-gradient(135deg,#222,#000)"
+    },
+    {
+      "titulo": "Tienda ",
+      "precio": "200",
+      "keys": "",
+      "acento": "#44822a",
+      "img": "",
+      "video": "videos/628832.mp4",
+      "grad": "linear-gradient(135deg,#222,#000)"
+    },
+    {
+      "titulo": "Tienda mochilas",
+      "precio": "90",
+      "keys": "",
+      "acento": "#d14b4b",
+      "img": "",
+      "video": "videos/628833.mp4",
+      "grad": "linear-gradient(135deg,#222,#000)"
+    },
+    {
+      "titulo": "Zapatillas tienda online ",
+      "precio": "",
+      "keys": "",
+      "acento": "#7cc8ff",
+      "img": "",
+      "video": "videos/628824.mp4",
       "grad": "linear-gradient(135deg,#222,#000)"
     }
   ],
