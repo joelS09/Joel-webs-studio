@@ -2,9 +2,9 @@ window.SITE_DATA={
   "marca": {
     "nombre": "Joel Webs Studio",
     "logo": "imagenes/612999.jpg",
-    "video": "imagenes/628672.jpg",
+    "video": "imagenes/628674.jpg",
     "lema": "Diseño web · Piura, Perú",
-    "videoClaro": "imagenes/628673.jpg"
+    "videoClaro": "imagenes/628675.jpg"
   },
   "menu": [
     {
@@ -85,7 +85,17 @@ window.SITE_DATA={
       "grad": "linear-gradient(135deg,#ff0055,#000)"
     }
   ],
-  "modelos": [],
+  "modelos": [
+    {
+      "titulo": "Cafetería ",
+      "precio": "200",
+      "keys": "Cafetería ",
+      "acento": "#755601",
+      "img": "",
+      "video": "videos/628484.mp4",
+      "grad": "linear-gradient(135deg,#222,#000)"
+    }
+  ],
   "portafolio": [],
   "preguntas": [
     {
