@@ -531,6 +531,60 @@ html.lite:not(.nc) #drawer:before,html.nogiro:not(.nc) #drawer:before,html.nov:n
 html:not(.nc) #drawer:before,html.nc #drawer:before,html #drawer .ring{animation-duration:calc(var(--giro,3s)*.75);animation-timing-function:steps(var(--gs,90),end)}
 html #drawer .ring{animation-play-state:paused}
 html body.menu-ready #drawer .ring{animation-play-state:running}
+
+/* ===== Panel: solo queda el contorno que gira en el panel (sin anillos en los logos) ===== */
+.d-head>img,.d-foot>img{display:block;flex:0 0 auto;border:0 !important;box-shadow:none !important;border-radius:50%;object-fit:cover;background:transparent}
+.d-head>img{width:40px;height:40px}.d-foot>img{width:38px;height:38px}
+
+/* ===== Buscador: el contorno gira un poco más rápido que antes (el del panel no cambia) ===== */
+.search:before{animation-duration:calc(var(--giro,3s)*.65)}
+
+/* ===== Planes: tarjetas que se arman una a una ===== */
+#carouselPlanes.plans-grid{display:grid;grid-template-columns:1fr;gap:20px;overflow:visible;padding:8px 16px 14px 0;margin:0;scroll-snap-type:none}
+#carouselPlanes>.plan-card{flex:none;width:auto;max-width:none;min-width:0;padding:30px 24px 26px}
+.plans-grid .plan-head{display:block}
+.plans-grid .plan-tx{width:100%}
+html .plans-grid .plan-name{font-size:14px;letter-spacing:.14em}
+html .plans-grid .plan-price{font-size:clamp(60px,19vw,76px) !important;margin:10px 0 0 !important;letter-spacing:-2px !important;line-height:1 !important}
+html .plans-grid .plan-price small{font-size:clamp(22px,6vw,28px);transform:translateY(-.6em);letter-spacing:0}
+.plans-grid .plan-sep{margin:20px 0 4px}
+.plans-grid .plan-list li{font-size:14.5px}
+.plans-grid .plan-card .btn-glow{margin-top:auto}
+@media (min-width:700px){#carouselPlanes.plans-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;padding-right:16px}}
+@media (min-width:900px){
+ #carouselPlanes.plans-grid{padding:8px 0 14px;margin:0;gap:24px}
+ #carouselPlanes>.plan-card{padding:34px 26px 28px}
+}
+@media (min-width:1180px){#carouselPlanes.plans-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}
+ html .plans-grid .plan-price{font-size:clamp(54px,4.4vw,70px) !important}}
+/* estado inicial (oculto) → se muestra al añadir .in, con retrasos escalonados */
+html .plan-card{transition:opacity .6s ease,translate .7s cubic-bezier(.2,.8,.2,1),scale .7s cubic-bezier(.2,.8,.2,1),transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .3s}
+.plan-card:not(.in){opacity:0;translate:0 36px;scale:.96}
+.plan-card .plan-name,.plan-card .plan-sep,.plan-card .plan-list li,.plan-card .btn-glow{transition-property:opacity,translate,scale,transform,box-shadow,background;transition-duration:.5s;transition-timing-function:cubic-bezier(.2,.8,.2,1)}
+.plan-card:not(.in) .plan-name{opacity:0;translate:0 10px}
+.plan-card .plan-name{transition-delay:.12s}
+.plan-card:not(.in) .plan-price{opacity:0;scale:.55;transform-origin:left center}
+.plan-card .plan-price{transition:opacity .45s ease .28s,scale .65s cubic-bezier(.3,1.5,.5,1) .28s,transform .3s}
+.plan-card:not(.in) .plan-sep{opacity:0;scale:0 1;transform-origin:left}
+.plan-card .plan-sep{transition-delay:.62s}
+.plan-card:not(.in) .plan-list li{opacity:0;translate:-16px 0}
+.plan-card .plan-list li{transition-delay:calc(.75s + var(--i,0)*.16s)}
+.plan-card .plan-list li:before{transition:scale .4s cubic-bezier(.3,1.6,.5,1) calc(.85s + var(--i,0)*.16s)}
+.plan-card:not(.in) .plan-list li:before{scale:0}
+.plan-card:not(.in) .btn-glow{opacity:0;translate:0 14px}
+.plan-card .btn-glow{transition-delay:calc(.8s + var(--n,3)*.16s)}
+.plan-card.in .btn-glow:hover{transition-delay:0s}
+
+/* ===== Skills: tarjetas grandes ===== */
+.sk-grid{grid-template-columns:repeat(var(--sk-cols,2),minmax(0,1fr)) !important;gap:14px !important;padding-right:16px}
+.sk,html.nc .sk{gap:14px;padding:26px 10px 22px;border-radius:22px;font-size:16px;font-weight:700;color:rgb(var(--fg))}
+.sk img{width:clamp(72px,24vw,104px);height:clamp(72px,24vw,104px)}
+@media (min-width:900px){
+ .sk-grid{--sk-cols:4;gap:22px !important;padding-right:0}
+ .sk,html.nc .sk{padding:38px 16px 30px;font-size:19px;border-radius:26px}
+ .sk img{width:128px;height:128px}
+}
+html[data-theme=light] .sk img{padding:8px;border-radius:18px}
 </style>
 </head>
 <body>
@@ -607,7 +661,7 @@ preguntas:'<svg viewBox="0 0 64 64"><path d="M14 12h36a6 6 0 0 1 6 6v22a6 6 0 0 
 const SI=k=>(NI[k]||'').replace('<svg','<svg class="sec-ico"');
 $('navWrap').innerHTML=D.menu.map((m,i)=>`<a href="#${E(m.id)}" class="link${i?'':' active'}">${NI[m.id]?NI[m.id].replace('<svg','<svg class="nav-ico"'):''}${E(m.texto.charAt(0)+m.texto.slice(1).toLowerCase())}</a>`).join('');
 const PLANE='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.4 2.6a1 1 0 0 0-1-.2L3 9.1a1 1 0 0 0 .1 1.9l6.6 2.3 2.3 6.6a1 1 0 0 0 1.9.1l6.7-17.4a1 1 0 0 0-.2-1z"/></svg>';
-$('drawer').innerHTML='<div class="dr-in"><div class="d-head"><span class="ring"><img id="dLogo" alt=""></span><div class="d-tt"><b>'+E(M.nombre)+'</b><small>'+E(M.lema||'')+'</small></div><button id="dClose" aria-label="Cerrar">✕</button></div><div class="d-label">Menú</div>'+D.menu.map((m,i)=>`<a href="#${E(m.id)}"${i?'':' class="active"'}>${NI[m.id]?NI[m.id].replace('<svg','<svg class="nav-ico"'):''}${E(m.texto.charAt(0)+m.texto.slice(1).toLowerCase())}</a>`).join('')+'<div class="d-sep"></div><div class="d-mode"><span class="mi"><svg class="nav-ico mo-moon" viewBox="0 0 24 24"><path d="M20 14.500A8.500 8.500 0 0 1 9.500 4a8.500 8.500 0 1 0 10.500 10.500z"/></svg><svg class="nav-ico mo-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.200"/><path d="M12 2.500v2M12 19.500v2M2.500 12h2M19.500 12h2M5.300 5.300l1.400 1.400M17.300 17.300l1.400 1.400M5.300 18.700l1.400-1.400M17.300 6.700l1.400-1.400"/></svg></span><span class="mt"><b>Modo oscuro</b><small id="modoTx"></small></span><button type="button" class="tgl" id="modoSw" role="switch" aria-checked="true" aria-label="Modo oscuro"><i></i></button></div>'+`<a href="#cotizar" class="d-cta">${PLANE.replace('<svg','<svg class="d-ico"')}${E(D.boton.texto)}</a><div class="d-foot"><span class="ring sm"><img id="dLogo2" alt=""></span><div><b>${E(M.nombre)}</b><small>${E(M.lema||'')}</small></div></div></div>`;
+$('drawer').innerHTML='<div class="dr-in"><div class="d-head"><img id="dLogo" alt=""><div class="d-tt"><b>'+E(M.nombre)+'</b><small>'+E(M.lema||'')+'</small></div><button id="dClose" aria-label="Cerrar">✕</button></div><div class="d-label">Menú</div>'+D.menu.map((m,i)=>`<a href="#${E(m.id)}"${i?'':' class="active"'}>${NI[m.id]?NI[m.id].replace('<svg','<svg class="nav-ico"'):''}${E(m.texto.charAt(0)+m.texto.slice(1).toLowerCase())}</a>`).join('')+'<div class="d-sep"></div><div class="d-mode"><span class="mi"><svg class="nav-ico mo-moon" viewBox="0 0 24 24"><path d="M20 14.500A8.500 8.500 0 0 1 9.500 4a8.500 8.500 0 1 0 10.500 10.500z"/></svg><svg class="nav-ico mo-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.200"/><path d="M12 2.500v2M12 19.500v2M2.500 12h2M19.500 12h2M5.300 5.300l1.400 1.400M17.300 17.300l1.400 1.400M5.300 18.700l1.400-1.400M17.300 6.700l1.400-1.400"/></svg></span><span class="mt"><b>Modo oscuro</b><small id="modoTx"></small></span><button type="button" class="tgl" id="modoSw" role="switch" aria-checked="true" aria-label="Modo oscuro"><i></i></button></div>'+`<a href="#cotizar" class="d-cta">${PLANE.replace('<svg','<svg class="d-ico"')}${E(D.boton.texto)}</a><div class="d-foot"><img id="dLogo2" alt=""><div><b>${E(M.nombre)}</b><small>${E(M.lema||'')}</small></div></div></div>`;
 ['dLogo','dLogo2'].forEach(id=>{const im=$(id);im.src=M.logo;im.onerror=function(){this.style.display='none'}});
 /* Instalable desde Chrome ("Instalar app" / "Agregar a pantalla de inicio") sin archivos extra y sin botón: el manifiesto se crea aquí mismo con el logo del sitio */
 (()=>{try{
@@ -617,7 +671,13 @@ $('drawer').innerHTML='<div class="dr-in"><div class="d-head"><span class="ring"
   const l=document.createElement('link');l.rel='manifest';l.href=URL.createObjectURL(new Blob([JSON.stringify(m)],{type:'application/manifest+json'}));document.head.appendChild(l)};
  const im=new Image();im.onload=()=>{try{put([192,512].map(n=>{const c=document.createElement('canvas');c.width=c.height=n;c.getContext('2d').drawImage(im,0,0,n,n);return{src:c.toDataURL('image/png'),sizes:n+'x'+n,type:'image/png',purpose:'any'}}))}catch(e){put([{src:im.src,sizes:'512x512',type:'image/jpeg'}])}};
  im.onerror=()=>put([]);im.src=M.logo}catch(e){}})();
-const toggleMenu=o=>{const b=document.body,on=b.classList.toggle('menu-open',o),v=document.getElementById('videoFondo');clearTimeout(toggleMenu.t);if(on){toggleMenu.t=setTimeout(()=>b.classList.add('menu-ready'),460);if(v&&!v.paused&&!v.ended){v.pause();toggleMenu.vp=1}}else{b.classList.remove('menu-ready');if(toggleMenu.vp){toggleMenu.vp=0;if(v)v.play().catch(()=>{})}}};
+window.vidHold=false;
+const toggleMenu=o=>{const b=document.body,v=document.getElementById('videoFondo'),on=!b.classList.contains('menu-open')&&o!==false;
+ /* el video se pausa ANTES de abrir el panel y no se reanuda hasta cerrarlo */
+ if(on){window.vidHold=true;if(v&&!v.paused)v.pause()}
+ b.classList.toggle('menu-open',on);clearTimeout(toggleMenu.t);
+ if(on){toggleMenu.t=setTimeout(()=>b.classList.add('menu-ready'),460)}
+ else{b.classList.remove('menu-ready');window.vidHold=false;if(v&&typeof parado!=='undefined'&&!parado)v.play().catch(()=>{})}};
 $('modoSw').onclick=()=>{try{localStorage.setItem('joel_modo',esOscuro()?'light':'dark')}catch(e){}pintarTema()};
 $('modoTx').onclick=()=>{if(modoGuardado()){try{localStorage.removeItem('joel_modo')}catch(e){}pintarTema()}};
 pintarTema();
@@ -634,7 +694,7 @@ $('app').innerHTML=`
 <div class="pasos">${(P.pasos||[]).map(t=>`<div class="paso">${E(t)}</div>`).join('')}</div>
 <div class="intro-cierre"><p>${E((P.cierre||'').replace('{desde}',DESDE))}</p><div class="intro-btns"><a class="btn-glow ghost" href="#planes">${E(P.boton2||'Ver planes')}</a></div></div></section></div>
 <div class="section" id="skills"><div class="sec-head"><h2>${SI('skills')}${E(S.skills||'Skills')}</h2></div><div class="sk-grid">${(D.skills||[]).map(k=>`<div class="sk"><img src="${E(k.img)}" alt="${E(k.nombre)}" loading="lazy" onerror="this.style.visibility='hidden'"><span>${E(k.nombre)}</span></div>`).join('')}</div></div>
-<div class="section" id="planes"><div class="sec-head"><h2>${SI('planes')}${E(S.planes)}</h2></div><div class="carousel" id="carouselPlanes"></div></div>
+<div class="section" id="planes"><div class="sec-head"><h2>${SI('planes')}${E(S.planes)}</h2></div><div class="plans-grid" id="carouselPlanes"></div></div>
 <div class="section" id="modelos"><div class="sec-head"><h2>${SI('modelos')}${E(S.modelos)}</h2><span id="contador"></span></div><div class="carousel" id="carouselModelos"></div></div>
 <div class="section" id="portafolio"><div class="sec-head"><h2>${SI('portafolio')}${E(S.portafolio)}</h2></div><div class="carousel" id="carouselPorta"></div></div>
 <div class="section" id="preguntas"><div class="sec-head"><h2>${SI('preguntas')}${E(S.preguntas)}</h2></div><div class="preguntas-grid">${D.preguntas.map(q=>`<div class="pregunta-card"><h3>${E(q.q)}</h3><div class="ans"><div><p>${E(q.a)}</p></div></div></div>`).join('')}</div></div>
@@ -652,14 +712,24 @@ const hay=o=>norm([o.nombre,o.titulo,o.plan,o.keys,o.precio].join(' '));
 const tokOk=(h,hw,t)=>h.includes(t)||(t.length>=4&&hw.some(w=>w.length>=3&&lev(w,t)<=1));
 const hexRGB=h=>{h=String(h||'').replace('#','');if(h.length===3)h=h.replace(/./g,'$&$&');const n=parseInt(h,16);return h.length===6&&!isNaN(n)?[n>>16&255,n>>8&255,n&255].join(','):''};
 const precioH=t=>{const m=String(t==null?'':t).match(/^(\D*?)\s*(\d.*)$/);return m&&m[1]?`<small>${E(m[1])}</small>${E(m[2])}`:E(t)};
-const cPlan=(p,i)=>`<div class="plan-card"${hexRGB(p.acento)?` style="--pc:${hexRGB(p.acento)}"`:''}><div class="plan-head"><div class="plan-tx"><div class="plan-name">${E(p.nombre)}</div><div class="plan-price">${precioH(p.precio)}</div></div>${p.icono?`<img class="plan-img" width="104" height="104" src="${E(encodeURI(p.icono))}" alt="${E(p.nombre)}" loading="eager" decoding="async" onerror="this.remove()">`:''}</div><div class="plan-sep"></div><ul class="plan-list">${String(p.desc||'').split('\n').filter(t=>t.trim()).map(t=>`<li>${E(t)}</li>`).join('')}</ul><button class="btn-glow" data-plan="${i}">Seleccionar plan${PLANE}</button></div>`;
+const cPlan=(p,i)=>{const L=String(p.desc||'').split('\n').filter(t=>t.trim());return `<div class="plan-card${PQ.init?' in':''}" style="--n:${L.length}${hexRGB(p.acento)?';--pc:'+hexRGB(p.acento):''}"><div class="plan-head"><div class="plan-tx"><div class="plan-name">${E(p.nombre)}</div><div class="plan-price">${precioH(p.precio)}</div></div></div><div class="plan-sep"></div><ul class="plan-list">${L.map((t,k)=>`<li style="--i:${k}">${E(t)}</li>`).join('')}</ul><button class="btn-glow" data-plan="${i}">Seleccionar plan${PLANE}</button></div>`};
 const pcs=o=>hexRGB(o.acento)?` style="--pc:${hexRGB(o.acento)}"`:'';
 const cMod=(m,i)=>`<div class="model-card gcard"${pcs(m)}>${pic(m)}<div class="card-info"><b>${E(m.titulo)}</b><span>${E(m.precio)}</span></div><button class="btn-glow" data-mod="${i}">Seleccionar modelo${PLANE}</button></div>`;
 const cPor=p=>`<div class="bg-card gcard"${pcs(p)}>${pic(p)}<div class="label">${E(p.nombre)} <small>${E(p.plan)}</small></div></div>`;
 const revObs=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const t=e.target;t.classList.add('in');if(t.classList.contains('carousel')){t.dataset.seen=1;t.querySelectorAll('.rv').forEach(k=>k.classList.add('in'))}revObs.unobserve(t)}),{threshold:.12,rootMargin:'0px 0px -6% 0px'});
-function reveal(){document.querySelectorAll('.plan-card,.gcard,.pregunta-card').forEach(el=>{if(el.dataset.vo)return;el.dataset.vo=1;visObs.observe(el)});document.querySelectorAll('.sec-head,.about>*,.sk,.plan-card,.model-card,.bg-card,.pregunta-card,.cta>*').forEach((el,i)=>{if(el.dataset.rv)return;el.dataset.rv=1;el.classList.add('rv');const sib=[...el.parentNode.children].indexOf(el);el.style.setProperty('--d',Math.min(sib,6)*.09+'s');const car=el.closest('.carousel');if(car){if(car.dataset.seen)el.classList.add('in');else revObs.observe(car)}else revObs.observe(el)})}
+function reveal(){document.querySelectorAll('.plan-card,.gcard,.pregunta-card').forEach(el=>{if(el.dataset.vo)return;el.dataset.vo=1;visObs.observe(el)});document.querySelectorAll('.sec-head,.about>*,.sk,.model-card,.bg-card,.pregunta-card,.cta>*').forEach((el,i)=>{if(el.dataset.rv)return;el.dataset.rv=1;el.classList.add('rv');const sib=[...el.parentNode.children].indexOf(el);el.style.setProperty('--d',Math.min(sib,6)*.09+'s');const car=el.closest('.carousel');if(car){if(car.dataset.seen)el.classList.add('in');else revObs.observe(car)}else revObs.observe(el)})}
 const visObs=new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle('vis',e.isIntersecting)),{rootMargin:'80px'});
 const VM={};
+/* Planes: se arman tarjeta por tarjeta (primero el precio, luego cada característica y por último el botón); la siguiente empieza cuando la anterior casi termina */
+const PQ={init:false,q:[],run:false};
+const planObs=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;planObs.unobserve(e.target);PQ.q.push(e.target);planNext()}),{threshold:.25,rootMargin:'0px 0px -6% 0px'});
+function planNext(){if(PQ.run)return;PQ.q=PQ.q.filter(c=>c.isConnected&&!c.classList.contains('in'));if(!PQ.q.length)return;
+ const all=[...$('carouselPlanes').children];PQ.q.sort((a,b)=>all.indexOf(a)-all.indexOf(b));
+ const c=PQ.q.shift(),n=+c.style.getPropertyValue('--n')||3;PQ.run=true;c.classList.add('in');
+ setTimeout(()=>{PQ.run=false;planNext()},(.7+n*.16+.25)*1000)}
+function planAnim(){const g=$('carouselPlanes');if(!g)return;
+ if(PQ.init||matchMedia('(prefers-reduced-motion:reduce)').matches){g.querySelectorAll('.plan-card:not(.in)').forEach(c=>c.classList.add('in'));return}
+ PQ.init=true;g.querySelectorAll('.plan-card:not(.in)').forEach(c=>planObs.observe(c))}
 ['carouselModelos','carouselPorta'].forEach(id=>{const c=$(id);if(!c)return;c.classList.add('collapsed');const b=document.createElement('button');b.type='button';b.className='vermas none';c.insertAdjacentElement('afterend',b);VM[id]=b;
   b.onclick=()=>{const cerrando=!c.classList.toggle('collapsed');vmUpd(id,+b.dataset.t);if(!cerrando)c.closest('.section').scrollIntoView({behavior:'smooth'})}});
 function vmUpd(id,n){const b=VM[id];if(!b)return;const c=$(id),extra=Math.max(0,n-3);b.dataset.n=extra;b.dataset.t=n;b.classList.toggle('none',extra===0);const abierto=!c.classList.contains('collapsed');b.classList.toggle('open',abierto);b.innerHTML=(abierto?'Ver menos ':'Ver más ('+extra+') ')+'<i></i>'}
@@ -670,7 +740,7 @@ function pintar(q,exacto){
   const a=fill('carouselPlanes',D.planes,cPlan,'No hay planes con esa palabra clave.');
   const b=fill('carouselModelos',D.modelos,cMod,'No hay modelos con esa palabra clave.');
   const c=fill('carouselPorta',D.portafolio,cPor,'No hay trabajos con esa palabra clave.');
-  contador.textContent=b+' modelos';vmUpd('carouselModelos',b);vmUpd('carouselPorta',c);fixImgs();reveal();return{planes:a,modelos:b,portafolio:c};
+  contador.textContent=b+' modelos';vmUpd('carouselModelos',b);vmUpd('carouselPorta',c);fixImgs();reveal();planAnim();return{planes:a,modelos:b,portafolio:c};
 }
 /* Cada plan, modelo y trabajo del portafolio aporta palabras clave automáticamente */
 const STOP=new Set('de del la el los las y e o con para en un una al por que plan planes modelo modelos web sitio pagina'.split(' '));
@@ -726,46 +796,6 @@ generarTags();pintar('');
 let tmr;buscador.addEventListener('input',()=>{const q=buscador.value.trim();searchBox.classList.toggle('has-text',!!q);sugerir();clearTimeout(tmr);tmr=setTimeout(()=>pintar(q,false),140)});
 buscador.addEventListener('focus',sugerir);
 
-/* Carruseles: flechas en PC y, en celulares, un plan por segundo (al llegar al final regresa al inicio). Animación propia con rAF: fluida y sin pelear con scroll-snap */
-(function(){
-  const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches,touch=matchMedia('(pointer:coarse)').matches;
-  const gapOf=el=>parseFloat(getComputedStyle(el).columnGap)||14;
-  const cardW=el=>{const k=el.children[0];return k?k.offsetWidth+gapOf(el):0};
-  const ease=t=>.5-Math.cos(Math.PI*t)/2;
-  function slide(el,to,ms){
-    cancelAnimationFrame(el._raf);
-    const from=el.scrollLeft,dist=to-from;
-    if(Math.abs(dist)<1||reduce){el.scrollLeft=to;return}
-    el.classList.add('moving');
-    const t0=performance.now();
-    const step=t=>{const k=Math.min(1,Math.max(0,(t-t0)/ms));el.scrollLeft=from+dist*ease(k);if(k<1)el._raf=requestAnimationFrame(step);else el.classList.remove('moving')};
-    el._raf=requestAnimationFrame(step);
-  }
-  const cp=$('carouselPlanes'),head=cp&&cp.parentNode.querySelector('.sec-head');
-  if(cp&&head){const ar=document.createElement('div');ar.className='car-arrows';ar.innerHTML='<button type="button" aria-label="Anterior">‹</button><button type="button" aria-label="Siguiente">›</button>';head.appendChild(ar);
-    const [a,b]=ar.children,mover=d=>{const w=cardW(cp);if(!w)return;const max=cp.scrollWidth-cp.clientWidth,i=Math.round(cp.scrollLeft/w);slide(cp,Math.max(0,Math.min(max,(i+d)*w)),520)};
-    a.onclick=()=>mover(-1);b.onclick=()=>mover(1);
-    const chk=()=>ar.classList.toggle('off',cp.scrollWidth<=cp.clientWidth+4);chk();addEventListener('resize',chk);addEventListener('load',chk);new MutationObserver(chk).observe(cp,{childList:true})}
-  if(reduce||!touch||!cp)return;
-  let pausa=false,vis=false,fin=false,idle;
-  cp.classList.add('auto');
-  const parar=()=>{pausa=true;fin=false;clearTimeout(idle);cancelAnimationFrame(cp._raf);cp.classList.remove('moving','auto')},
-        seguir=()=>{clearTimeout(idle);idle=setTimeout(()=>{pausa=false;cp.classList.add('auto')},6000)};
-  cp.addEventListener('touchstart',parar,{passive:true});cp.addEventListener('touchend',seguir,{passive:true});cp.addEventListener('touchcancel',seguir,{passive:true});
-  new IntersectionObserver(es=>{vis=es[0].isIntersecting},{threshold:.35}).observe(cp);
-  (function tick(){
-    setTimeout(()=>{
-      if(!pausa&&vis&&!document.hidden&&!document.body.classList.contains('menu-open')){
-        const max=cp.scrollWidth-cp.clientWidth,w=cardW(cp);
-        if(max>4&&w){
-          if(fin||cp.scrollLeft>=max-4){fin=false;slide(cp,0,800)}
-          else{const nx=(Math.round(cp.scrollLeft/w)+1)*w;if(nx>=max-4){fin=true;slide(cp,max,600)}else slide(cp,nx,600)}
-        }
-      }
-      tick();
-    },1000);
-  })();
-})();
 buscador.addEventListener('keydown',e=>{
   const n=sugL.length;
   if(e.key==='ArrowDown'||e.key==='ArrowUp'){if(!n)return;e.preventDefault();sugI=(sugI+(e.key==='ArrowDown'?1:-1)+n+1)%(n+1);if(sugI===n)sugI=-1;[...sug.children].forEach((c,i)=>c.classList.toggle('on',i===sugI));if(sugI>=0)sug.children[sugI].scrollIntoView({block:'nearest'});return}
@@ -798,7 +828,7 @@ function onScroll(){
   const cl=document.documentElement.getAttribute('data-theme')==='light';document.body.classList.toggle('sc',y>heroH-90);
   const a0=heroH*.15,a1=Math.max(a0+300,cl?heroH*1.05:skT),k=Math.max(0,Math.min(1,(y-a0)/(a1-a0))),o=+(k*k*(3-2*k)).toFixed(3);
   if(o!==vo){vo=o;veil.style.opacity=o}
-  const lejos=document.documentElement.classList.contains('lite')&&o>=1;if(lejos!==parado){parado=lejos;if(lejos)vid.pause();else vid.play().catch(()=>{})}
+  const lejos=document.documentElement.classList.contains('lite')&&o>=1;if(lejos!==parado){parado=lejos;if(lejos)vid.pause();else if(!window.vidHold)vid.play().catch(()=>{})}
   let cur=tops[0]&&tops[0][0];for(const t of tops)if(y+200>=t[1])cur=t[0];
   if(cur===cur0)return;cur0=cur;
   dl.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+cur));
@@ -825,12 +855,12 @@ const H=document.documentElement,sinVideo=()=>H.classList.add('sv');
 if(H.classList.contains('nov')||!M.video){v.removeAttribute('autoplay');v.preload='none';sinVideo()}else v.src=M.video;
 v.addEventListener('error',sinVideo);v.addEventListener('loadeddata',()=>{if(!H.classList.contains('nov')&&M.video)H.classList.remove('sv')});
 const guardar=()=>{try{if(v.currentTime>0.5)sessionStorage.setItem('joel_video_segundo',v.currentTime)}catch(e){}};
-function iniciar(){const g=parseFloat(sessionStorage.getItem('joel_video_segundo')||0);try{if(g>0.5&&v.duration&&g<v.duration-0.5)v.currentTime=g}catch(e){}if(parado)return;const p=v.play();if(p)p.catch(()=>{})}
+function iniciar(){if(window.vidHold)return;const g=parseFloat(sessionStorage.getItem('joel_video_segundo')||0);try{if(g>0.5&&v.duration&&g<v.duration-0.5)v.currentTime=g}catch(e){}if(parado)return;const p=v.play();if(p)p.catch(()=>{})}
 v.addEventListener('loadedmetadata',iniciar);
-v.addEventListener('timeupdate',()=>{if(!parado&&v.duration&&v.currentTime>v.duration-0.25){v.currentTime=0;v.play().catch(()=>{})}});
-v.addEventListener('ended',()=>{if(parado)return;v.currentTime=0;v.play().catch(()=>{})});
-v.addEventListener('pause',()=>{if(!document.hidden&&!parado)v.play().catch(()=>{})});
-document.addEventListener('visibilitychange',()=>{if(!document.hidden&&!parado)v.play().catch(()=>{})});
+v.addEventListener('timeupdate',()=>{if(!parado&&!window.vidHold&&v.duration&&v.currentTime>v.duration-0.25){v.currentTime=0;v.play().catch(()=>{})}});
+v.addEventListener('ended',()=>{if(parado||window.vidHold)return;v.currentTime=0;v.play().catch(()=>{})});
+v.addEventListener('pause',()=>{if(!document.hidden&&!parado&&!window.vidHold)v.play().catch(()=>{})});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&!parado&&!window.vidHold)v.play().catch(()=>{})});
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)iniciar()});
 ['pageshow','focus'].forEach(e=>addEventListener(e,iniciar));['pagehide','blur'].forEach(e=>addEventListener(e,guardar));
 </script>
