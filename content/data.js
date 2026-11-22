@@ -109,7 +109,7 @@ window.SITE_DATA={
       "precio": "200",
       "keys": "",
       "acento": "#44822a",
-      "img": "",
+      "img": "videos/628832.mp4",
       "video": "videos/628832.mp4",
       "grad": "linear-gradient(135deg,#222,#000)"
     },
@@ -118,7 +118,7 @@ window.SITE_DATA={
       "precio": "90",
       "keys": "",
       "acento": "#d14b4b",
-      "img": "",
+      "img": "videos/628833.mp4",
       "video": "videos/628833.mp4",
       "grad": "linear-gradient(135deg,#222,#000)"
     },
