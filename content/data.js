@@ -51,7 +51,7 @@ window.SITE_DATA={
       "nombre": "Plan Básico",
       "icono": "imagenes/plan-plata.webp",
       "acento": "#c9d1dc",
-      "precio": "S/50",
+      "precio": "S/70",
       "desc": "Una página simple y sencilla. \n5 Secciones. \n1 Página. \nEntrega en una semana. \nDominio Github. \nLugar en Google (apareces en los resultados de búsqueda de Google) Pero no te aseguramos el primer lugar ",
       "img": "imagenes/590800.jpg",
       "grad": "linear-gradient(135deg,#222,#000)"
@@ -84,79 +84,8 @@ window.SITE_DATA={
       "grad": "linear-gradient(135deg,#ff0055,#000)"
     }
   ],
-  "modelos": [
-    {
-      "titulo": "Barberia 💈 ",
-      "acento": "#f2c14e",
-      "precio": "S/150",
-      "keys": "Pro",
-      "img": "imagenes/617892.jpg",
-      "grad": "linear-gradient(135deg,#1a1a1a,#000)"
-    },
-    {
-      "titulo": "Producto Promo",
-      "acento": "#b48cff",
-      "precio": "S/75",
-      "keys": "Básico S Producto",
-      "img": "",
-      "grad": "linear-gradient(135deg,#00ff88,#0055ff)"
-    },
-    {
-      "titulo": "ApkMods",
-      "acento": "#7cc8ff",
-      "precio": "S/75",
-      "keys": "Apk Básico S",
-      "img": "",
-      "grad": "linear-gradient(135deg,#4a00ff,#00ffcc)"
-    },
-    {
-      "titulo": "Barber",
-      "acento": "#ff6b8a",
-      "precio": "S/150",
-      "keys": "Barber Pro",
-      "img": "",
-      "grad": "linear-gradient(135deg,#ff7a00,#000)"
-    },
-    {
-      "titulo": "Restaurant Gourmet",
-      "acento": "#3ddc97",
-      "precio": "S/150",
-      "keys": "Restaurant Pro",
-      "img": "",
-      "grad": "linear-gradient(135deg,#ff0055,#ffcc00)"
-    },
-    {
-      "titulo": "Tienda Pro Max",
-      "acento": "#ff9f43",
-      "precio": "S/250",
-      "keys": "Tienda Ultra",
-      "img": "",
-      "grad": "linear-gradient(135deg,#ff0055,#000)"
-    }
-  ],
-  "portafolio": [
-    {
-      "nombre": "Tony Barber",
-      "acento": "#c9d1dc",
-      "plan": "Plan Pro",
-      "img": "",
-      "grad": "linear-gradient(135deg,#ff7a00,#000)"
-    },
-    {
-      "nombre": "ApkMods",
-      "acento": "#f2c14e",
-      "plan": "Plan Básico S",
-      "img": "",
-      "grad": "linear-gradient(135deg,#4a00ff,#00ffcc)"
-    },
-    {
-      "nombre": "Restaurant",
-      "acento": "#b48cff",
-      "plan": "Plan Pro",
-      "img": "",
-      "grad": "linear-gradient(135deg,#ff0055,#ffcc00)"
-    }
-  ],
+  "modelos": [],
+  "portafolio": [],
   "preguntas": [
     {
       "q": "¿Qué tiempo demora mi web?",
@@ -194,7 +123,7 @@ window.SITE_DATA={
     "temaAcento": "#5cff5c",
     "temaAcento2": "#5cff5c",
     "temaFondo": "#050605",
-    "giroVelocidad": "3",
+    "giroVelocidad": "1.5",
     "visual": "clasico",
     "generalModo": "fijo",
     "generalColor": "#00ffff",
@@ -202,17 +131,13 @@ window.SITE_DATA={
     "botonColor": "#00ffff"
   },
   "presentacion": {
-    "seccion": "Sobre mí",
+    "seccion": "La web que necesitas para tu negocio esta a tu alcance ",
     "etiqueta": "HOLA, SOY JOEL",
     "titulo": "Tu negocio merece verse como el número uno.",
     "texto": "Soy Joel, programador web. Me dedico a crear sitios web para negocios, emprendedores y empresas que quieren dejar de ser uno más y empezar a recibir clientes todos los días.\nHoy tus clientes te buscan en Google desde el celular. Si no te encuentran, le compran a tu competencia, aunque tú seas mejor. Cada día sin web es un cliente que se va a otro lado.\nPor eso creo webs rápidas, elegantes y listas para vender, y me encargo de todo: diseño, programación y publicación.",
-    "pasos": [
-      "Me cuentas tu idea",
-      "Diseño y programo tu web",
-      "Publicas y recibes clientes"
-    ],
+    "pasos": [],
     "cierre": "Planes desde {desde}. Con un solo cliente nuevo, tu web ya puede pagarse sola. Elige tu plan y empecemos hoy.",
-    "boton2": "Ver planes"
+    "boton2": "Cotizar"
   },
   "skills": [
     {
