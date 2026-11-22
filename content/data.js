@@ -3,13 +3,16 @@ window.SITE_DATA={
     "nombre": "Joel Webs Studio",
     "logo": "imagenes/612999.jpg",
     "video": "imagenes/627054.mp4",
-    "videoClaro": "",
     "lema": "Diseño web · Piura, Perú"
   },
   "menu": [
     {
       "id": "inicio",
       "texto": "INICIO"
+    },
+    {
+      "id": "skills",
+      "texto": "SKILLS"
     },
     {
       "id": "planes",
@@ -22,10 +25,6 @@ window.SITE_DATA={
     {
       "id": "portafolio",
       "texto": "PORTAFOLIO"
-    },
-    {
-      "id": "skills",
-      "texto": "SKILLS"
     },
     {
       "id": "preguntas",
@@ -143,15 +142,15 @@ window.SITE_DATA={
   "skills": [
     {
       "nombre": "HTML",
-      "img": "imagenes/628469.png"
+      "img": "imagenes/skills/html.png"
     },
     {
       "nombre": "CSS",
-      "img": "imagenes/628470.png"
+      "img": "imagenes/skills/css.png"
     },
     {
       "nombre": "JS",
-      "img": "imagenes/628467.png"
+      "img": "imagenes/skills/js.png"
     },
     {
       "nombre": "Python",
@@ -163,7 +162,7 @@ window.SITE_DATA={
     },
     {
       "nombre": "C",
-      "img": "imagenes/628471.png"
+      "img": "imagenes/skills/c.png"
     },
     {
       "nombre": "C++",
