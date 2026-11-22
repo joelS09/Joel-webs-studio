@@ -142,15 +142,15 @@ window.SITE_DATA={
   "skills": [
     {
       "nombre": "HTML",
-      "img": "imagenes/628436.png"
+      "img": "imagenes/628469.png"
     },
     {
       "nombre": "CSS",
-      "img": "imagenes/628437.png"
+      "img": "imagenes/628470.png"
     },
     {
       "nombre": "JS",
-      "img": "imagenes/628438.png"
+      "img": "imagenes/628467.png"
     },
     {
       "nombre": "Python",
@@ -162,7 +162,7 @@ window.SITE_DATA={
     },
     {
       "nombre": "C",
-      "img": "imagenes/628433.png"
+      "img": "imagenes/628471.png"
     },
     {
       "nombre": "C++",
