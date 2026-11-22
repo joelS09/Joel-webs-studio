@@ -2,9 +2,9 @@ window.SITE_DATA={
   "marca": {
     "nombre": "Joel Webs Studio",
     "logo": "imagenes/612999.jpg",
-    "video": "imagenes/fondo oscuro.jpg",
+    "video": "imagenes/628672.jpg",
     "lema": "Diseño web · Piura, Perú",
-    "videoClaro": "imagenes/fondo claro.jpg"
+    "videoClaro": "imagenes/628673.jpg"
   },
   "menu": [
     {
